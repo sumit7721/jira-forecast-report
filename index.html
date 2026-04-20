@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>JIRA Epic Forecast Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+        }
+
+        .epic-table, .sprint-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .epic-table th, .sprint-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        .epic-table td, .sprint-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .epic-table tr:hover, .sprint-table tr:hover {
+            background-color: #f8f9ff;
+        }
+
+        .epic-key {
+            font-weight: 600;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+        }
+
+        .points {
+            font-weight: 700;
+            color: #764ba2;
+            text-align: right;
+            font-size: 1.1em;
+        }
+
+        .total-row {
+            background-color: #f8f9ff;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .total-row td {
+            border-top: 2px solid #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .sprint-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .completion-rate {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .rate-high {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .rate-medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .rate-low {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .forecast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .forecast-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .forecast-label {
+            color: #555;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .forecast-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .calculation-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .calculation-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .calculation-step {
+            margin: 10px 0;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .target-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .target-date {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .health-status {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .health-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .health-text {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .health-description {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .average-velocity {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .average-velocity .value {
+            font-size: 2em;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        /* ── Tab styles ── */
+        .tab-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .tab-btn {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.3);
+            color: white;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .tab-btn:hover { background: rgba(255,255,255,0.5); }
+        .tab-btn.active { background: white; color: #667eea; }
+
+        .project-panel { display: none; }
+        .project-panel.active { display: block; }
+
+        .velocity-note {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 3px 10px;
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .forecast-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8em; }
+            .target-date { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 JIRA EPIC FORECAST REPORT</h1>
+            <p class="subtitle">Generated on 2026-04-21 03:45:43</p>
+        </div>
+
+        <!-- Project Tabs -->
+        <div class="tab-bar">
+            
+            <button class="tab-btn active"
+                    onclick="showProject(0)"
+                    id="tab-0">
+                MREF - Dollar Field Exp
+            </button>
+            
+            <button class="tab-btn "
+                    onclick="showProject(1)"
+                    id="tab-1">
+                MREF - FF Installer
+            </button>
+            
+            <button class="tab-btn "
+                    onclick="showProject(2)"
+                    id="tab-2">
+                MGLOBAL - Phase II Petmeds
+            </button>
+            
+        </div>
+
+        <!-- Per-Project Panels -->
+        
+        <div class="project-panel active" id="panel-0">
+
+            <!-- Epic Story Points -->
+            <div class="section">
+                <h2 class="section-title">📋 Epic Story Points</h2>
+                <table class="epic-table">
+                    <thead>
+                        <tr>
+                            <th>Epic Key</th>
+                            <th>Summary</th>
+                            <th style="text-align: right;">Story Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="epic-key">MREF-5460</span></td>
+                            <td>Dollar field expansion: Existing pricing products and release activities</td>
+                            <td class="points">57.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MREF-5190</span></td>
+                            <td>Dollar field expansion: MDDB</td>
+                            <td class="points">19.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MREF-5201</span></td>
+                            <td>Dollar field expansion: Med-File</td>
+                            <td class="points">8.0 pts</td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td><strong>TOTAL</strong></td>
+                            <td></td>
+                            <td class="points">84.0 pts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sprint Velocity -->
+            <div class="section">
+                <h2 class="section-title">
+                    🚀 Sprint Velocity (Last 3 Completed Sprints)
+                    
+                    <span class="velocity-note">⚠ Adjusted velocity active</span>
+                    
+                </h2>
+                
+                <table class="sprint-table">
+                    <thead>
+                        <tr>
+                            <th>Sprint Name</th>
+                            <th style="text-align: right;">Committed</th>
+                            <th style="text-align: right;">Completed</th>
+                            <th style="text-align: center;">Completion Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 Sprint 8 - MREF</span></td>
+                            <td class="points">52.0 pts</td>
+                            <td class="points">38.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-medium">
+                                    73.1%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 Sprint 7 - MREF</span></td>
+                            <td class="points">55.0 pts</td>
+                            <td class="points">35.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    63.6%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 Sprint 6 - MREF</span></td>
+                            <td class="points">61.0 pts</td>
+                            <td class="points">30.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    49.2%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="average-velocity">
+                    Adjusted Average Velocity
+                    <span class="value">13.0 pts/sprint</span>
+                </div>
+                
+            </div>
+
+            <!-- Forecast Summary -->
+            
+            <div class="section">
+                <h2 class="section-title">🎯 Forecast Summary</h2>
+
+                <div class="forecast-grid">
+                    <div class="forecast-card">
+                        <div class="forecast-label">Total Story Points</div>
+                        <div class="forecast-value">84.0</div>
+                    </div>
+                    <div class="forecast-card">
+                        <div class="forecast-label">Adjusted Velocity</div>
+                        <div class="forecast-value">13.0</div>
+                    </div>
+                    <div class="forecast-card">
+                        <div class="forecast-label">Sprints Required</div>
+                        <div class="forecast-value">7</div>
+                    </div>
+                </div>
+
+                <div class="calculation-box">
+                    <h3>📐 Calculation Details</h3>
+                    <div class="calculation-step">
+                        <strong>Formula:</strong> Total Points ÷ Average Velocity = Sprints Needed
+                    </div>
+                    <div class="calculation-step">
+                        84.0 pts ÷ 13.0 pts/sprint = 6.46 sprints
+                    </div>
+                    <div class="calculation-step">
+                        <strong>Rounded Up:</strong> 7 sprints (always round up)
+                    </div>
+                </div>
+
+                <div class="calculation-box">
+                    <h3>📅 Timeline Details</h3>
+                    <div class="calculation-step"><strong>Today's Date:</strong> 2026-04-21</div>
+                    <div class="calculation-step"><strong>Current Sprint:</strong> Sprint 9 (ends 2026-04-29)</div>
+                    <div class="calculation-step">
+                        <strong>Sprints to Add:</strong> 6
+                        (Current Sprint 9 + 6 = Sprint 15)
+                    </div>
+                    <div class="calculation-step"><strong>Target Sprint:</strong> Sprint 15</div>
+                </div>
+
+                <div class="target-section">
+                    <h3 style="text-align: center; margin-bottom: 15px;">🎯 CALCULATED TARGET END DATE</h3>
+                    <div class="target-date">2026-07-22</div>
+                    <h3 style="text-align: center; margin: 30px 0 15px 0;">📋 PLANNED TARGET END DATE</h3>
+                    <div class="target-date">2026-07-21</div>
+                </div>
+
+                <div class="health-status">
+                    <div class="health-icon">🔴</div>
+                    <div class="health-text">PROJECT HEALTH: 🔴 CRITICAL</div>
+                    <div class="health-description">Behind schedule by 1 days</div>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="project-panel " id="panel-1">
+
+            <!-- Epic Story Points -->
+            <div class="section">
+                <h2 class="section-title">📋 Epic Story Points</h2>
+                <table class="epic-table">
+                    <thead>
+                        <tr>
+                            <th>Epic Key</th>
+                            <th>Summary</th>
+                            <th style="text-align: right;">Story Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="epic-key">MREF-4564</span></td>
+                            <td>FF installer: Deliver flat files to the customers</td>
+                            <td class="points">41.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MREF-4491</span></td>
+                            <td>FF installer: Common functions</td>
+                            <td class="points">30.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MREF-3613</span></td>
+                            <td>FF installer: Observability and analytics</td>
+                            <td class="points">2.0 pts</td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td><strong>TOTAL</strong></td>
+                            <td></td>
+                            <td class="points">73.0 pts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sprint Velocity -->
+            <div class="section">
+                <h2 class="section-title">
+                    🚀 Sprint Velocity (Last 3 Completed Sprints)
+                    
+                    <span class="velocity-note">⚠ Adjusted velocity active</span>
+                    
+                </h2>
+                
+                <table class="sprint-table">
+                    <thead>
+                        <tr>
+                            <th>Sprint Name</th>
+                            <th style="text-align: right;">Committed</th>
+                            <th style="text-align: right;">Completed</th>
+                            <th style="text-align: center;">Completion Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 Sprint 8 - MREF</span></td>
+                            <td class="points">52.0 pts</td>
+                            <td class="points">38.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-medium">
+                                    73.1%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 Sprint 7 - MREF</span></td>
+                            <td class="points">55.0 pts</td>
+                            <td class="points">35.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    63.6%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 Sprint 6 - MREF</span></td>
+                            <td class="points">61.0 pts</td>
+                            <td class="points">30.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    49.2%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="average-velocity">
+                    Adjusted Average Velocity
+                    <span class="value">15.0 pts/sprint</span>
+                </div>
+                
+            </div>
+
+            <!-- Forecast Summary -->
+            
+            <div class="section">
+                <h2 class="section-title">🎯 Forecast Summary</h2>
+
+                <div class="forecast-grid">
+                    <div class="forecast-card">
+                        <div class="forecast-label">Total Story Points</div>
+                        <div class="forecast-value">73.0</div>
+                    </div>
+                    <div class="forecast-card">
+                        <div class="forecast-label">Adjusted Velocity</div>
+                        <div class="forecast-value">15.0</div>
+                    </div>
+                    <div class="forecast-card">
+                        <div class="forecast-label">Sprints Required</div>
+                        <div class="forecast-value">5</div>
+                    </div>
+                </div>
+
+                <div class="calculation-box">
+                    <h3>📐 Calculation Details</h3>
+                    <div class="calculation-step">
+                        <strong>Formula:</strong> Total Points ÷ Average Velocity = Sprints Needed
+                    </div>
+                    <div class="calculation-step">
+                        73.0 pts ÷ 15.0 pts/sprint = 4.87 sprints
+                    </div>
+                    <div class="calculation-step">
+                        <strong>Rounded Up:</strong> 5 sprints (always round up)
+                    </div>
+                </div>
+
+                <div class="calculation-box">
+                    <h3>📅 Timeline Details</h3>
+                    <div class="calculation-step"><strong>Today's Date:</strong> 2026-04-21</div>
+                    <div class="calculation-step"><strong>Current Sprint:</strong> Sprint 9 (ends 2026-04-29)</div>
+                    <div class="calculation-step">
+                        <strong>Sprints to Add:</strong> 4
+                        (Current Sprint 9 + 4 = Sprint 13)
+                    </div>
+                    <div class="calculation-step"><strong>Target Sprint:</strong> Sprint 13</div>
+                </div>
+
+                <div class="target-section">
+                    <h3 style="text-align: center; margin-bottom: 15px;">🎯 CALCULATED TARGET END DATE</h3>
+                    <div class="target-date">2026-06-24</div>
+                    <h3 style="text-align: center; margin: 30px 0 15px 0;">📋 PLANNED TARGET END DATE</h3>
+                    <div class="target-date">2026-07-21</div>
+                </div>
+
+                <div class="health-status">
+                    <div class="health-icon">🟢</div>
+                    <div class="health-text">PROJECT HEALTH: 🟢 HEALTHY</div>
+                    <div class="health-description">On track with 27 days buffer</div>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="project-panel " id="panel-2">
+
+            <!-- Epic Story Points -->
+            <div class="section">
+                <h2 class="section-title">📋 Epic Story Points</h2>
+                <table class="epic-table">
+                    <thead>
+                        <tr>
+                            <th>Epic Key</th>
+                            <th>Summary</th>
+                            <th style="text-align: right;">Story Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-4846</span></td>
+                            <td>PetMeds: Phase 2 Deploy to Prod</td>
+                            <td class="points">49.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-4305</span></td>
+                            <td>PetMeds: Contraindications</td>
+                            <td class="points">48.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-5569</span></td>
+                            <td>TBD enhancements</td>
+                            <td class="points">48.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-4342</span></td>
+                            <td>PetMeds: Allergens</td>
+                            <td class="points">38.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-5509</span></td>
+                            <td>PetMeds: Deferred to Phase 2</td>
+                            <td class="points">36.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-5508</span></td>
+                            <td>Supportability</td>
+                            <td class="points">29.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-4639</span></td>
+                            <td>PetMeds Look up: Common allergens</td>
+                            <td class="points">9.0 pts</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="epic-key">MGLOBAL-4640</span></td>
+                            <td>PetMeds Look up: Conditions</td>
+                            <td class="points">8.0 pts</td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td><strong>TOTAL</strong></td>
+                            <td></td>
+                            <td class="points">265.0 pts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sprint Velocity -->
+            <div class="section">
+                <h2 class="section-title">
+                    🚀 Sprint Velocity (Last 3 Completed Sprints)
+                    
+                </h2>
+                
+                <table class="sprint-table">
+                    <thead>
+                        <tr>
+                            <th>Sprint Name</th>
+                            <th style="text-align: right;">Committed</th>
+                            <th style="text-align: right;">Completed</th>
+                            <th style="text-align: center;">Completion Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 MGLOBAL Sprint-8</span></td>
+                            <td class="points">76.0 pts</td>
+                            <td class="points">39.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    51.3%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 MGLOBAL Sprint-7</span></td>
+                            <td class="points">76.0 pts</td>
+                            <td class="points">13.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    17.1%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2026 MGLOBAL Sprint-6</span></td>
+                            <td class="points">97.0 pts</td>
+                            <td class="points">82.0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-high">
+                                    84.5%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="average-velocity">
+                    Average Velocity
+                    <span class="value">44.67 pts/sprint</span>
+                </div>
+                
+            </div>
+
+            <!-- Forecast Summary -->
+            
+            <div class="section">
+                <h2 class="section-title">🎯 Forecast Summary</h2>
+
+                <div class="forecast-grid">
+                    <div class="forecast-card">
+                        <div class="forecast-label">Total Story Points</div>
+                        <div class="forecast-value">265.0</div>
+                    </div>
+                    <div class="forecast-card">
+                        <div class="forecast-label">Velocity</div>
+                        <div class="forecast-value">44.67</div>
+                    </div>
+                    <div class="forecast-card">
+                        <div class="forecast-label">Sprints Required</div>
+                        <div class="forecast-value">6</div>
+                    </div>
+                </div>
+
+                <div class="calculation-box">
+                    <h3>📐 Calculation Details</h3>
+                    <div class="calculation-step">
+                        <strong>Formula:</strong> Total Points ÷ Average Velocity = Sprints Needed
+                    </div>
+                    <div class="calculation-step">
+                        265.0 pts ÷ 44.67 pts/sprint = 5.93 sprints
+                    </div>
+                    <div class="calculation-step">
+                        <strong>Rounded Up:</strong> 6 sprints (always round up)
+                    </div>
+                </div>
+
+                <div class="calculation-box">
+                    <h3>📅 Timeline Details</h3>
+                    <div class="calculation-step"><strong>Today's Date:</strong> 2026-04-21</div>
+                    <div class="calculation-step"><strong>Current Sprint:</strong> Sprint 9 (ends 2026-04-29)</div>
+                    <div class="calculation-step">
+                        <strong>Sprints to Add:</strong> 5
+                        (Current Sprint 9 + 5 = Sprint 14)
+                    </div>
+                    <div class="calculation-step"><strong>Target Sprint:</strong> Sprint 14</div>
+                </div>
+
+                <div class="target-section">
+                    <h3 style="text-align: center; margin-bottom: 15px;">🎯 CALCULATED TARGET END DATE</h3>
+                    <div class="target-date">2026-07-08</div>
+                    <h3 style="text-align: center; margin: 30px 0 15px 0;">📋 PLANNED TARGET END DATE</h3>
+                    <div class="target-date">2026-06-10</div>
+                </div>
+
+                <div class="health-status">
+                    <div class="health-icon">🔴</div>
+                    <div class="health-text">PROJECT HEALTH: 🔴 CRITICAL</div>
+                    <div class="health-description">Behind schedule by 28 days</div>
+                </div>
+            </div>
+            
+
+        </div>
+        
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>🔗 <a href="/text" style="color: white; text-decoration: underline;">View Text Report</a> |
+               <a href="/api/forecast" style="color: white; text-decoration: underline;">JSON API</a></p>
+            <p style="margin-top: 10px;">JIRA Epic Forecast Dashboard © 2026</p>
+        </div>
+    </div>
+
+    <script>
+        function showProject(idx) {
+            document.querySelectorAll('.project-panel').forEach((p, i) => {
+                p.classList.toggle('active', i === idx);
+            });
+            document.querySelectorAll('.tab-btn').forEach((b, i) => {
+                b.classList.toggle('active', i === idx);
+            });
+        }
+    </script>
+</body>
+</html>
