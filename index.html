@@ -290,10 +290,112 @@
             vertical-align: middle;
         }
 
+        /* ── AI Summary styles ── */
+        .ai-btn-wrap {
+            text-align: center;
+            margin: 0 0 30px 0;
+        }
+        .ai-toggle-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.5px;
+        }
+        .ai-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(102,126,234,0.55);
+        }
+        .ai-panel { display: none; }
+        .ai-panel.open { display: block; }
+        .ai-overview {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 18px 22px;
+            border-radius: 8px;
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.75;
+        }
+        .ai-section-heading {
+            color: #333;
+            font-size: 1.15em;
+            font-weight: 700;
+            margin: 25px 0 8px 0;
+        }
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .risk-card {
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+        .risk-card.risk-high   { background: #fff0f0; border-color: #dc3545; }
+        .risk-card.risk-medium { background: #fffbf0; border-color: #fd7e14; }
+        .risk-card.risk-low    { background: #f0fff4; border-color: #28a745; }
+        .risk-card .risk-title { font-weight: 700; font-size: 1em; margin-bottom: 6px; }
+        .risk-badge {
+            display: inline-block;
+            padding: 2px 9px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .risk-badge.high   { background: #dc3545; color: white; }
+        .risk-badge.medium { background: #fd7e14; color: white; }
+        .risk-badge.low    { background: #28a745; color: white; }
+        .risk-detail { color: #555; font-size: 0.92em; margin-top: 8px; line-height: 1.5; }
+        .ai-sub-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .ai-sub-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 0.88em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .ai-sub-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        .ai-sub-table tr:hover { background: #f8f9ff; }
+        .sprint-num-ai { font-weight: 700; color: #667eea; white-space: nowrap; }
+        .rec-list { list-style: none; padding: 0; margin: 0; }
+        .rec-list li {
+            padding: 12px 15px 12px 44px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+            line-height: 1.6;
+            color: #333;
+        }
+        .rec-list li::before {
+            content: '→';
+            position: absolute;
+            left: 15px;
+            color: #667eea;
+            font-weight: 700;
+        }
+
         @media (max-width: 768px) {
             .forecast-grid { grid-template-columns: 1fr; }
             .header h1 { font-size: 1.8em; }
             .target-date { font-size: 1.8em; }
+            .risk-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -302,7 +404,7 @@
         <!-- Header -->
         <div class="header">
             <h1>📊 JIRA EPIC FORECAST REPORT</h1>
-            <p class="subtitle">Generated on 2026-04-29 10:55:44</p>
+            <p class="subtitle">Generated on 2026-04-29 12:40:13</p>
         </div>
 
         <!-- Project Tabs -->
@@ -493,6 +595,25 @@
             </div>
             
 
+            <!-- AI Summary Button -->
+            <div class="ai-btn-wrap">
+                <button class="ai-toggle-btn" onclick="toggleAI(0)">
+                    🤖 View AI Forecast Summary
+                </button>
+            </div>
+
+            <!-- AI Summary Collapsible Panel -->
+            
+            <div class="ai-panel" id="ai-panel-0">
+                <div class="section">
+                    <p style="color:#888;text-align:center;padding:20px 0;">
+                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
+                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
+                    </p>
+                </div>
+            </div>
+            
+
         </div>
         
         <div class="project-panel " id="panel-1">
@@ -519,7 +640,7 @@
                         <tr>
                             <td><span class="epic-key">MREF-4491</span></td>
                             <td>FF installer: Common functions</td>
-                            <td class="points">28.0 pts</td>
+                            <td class="points">25.0 pts</td>
                         </tr>
                         
                         <tr>
@@ -537,7 +658,7 @@
                         <tr class="total-row">
                             <td><strong>TOTAL</strong></td>
                             <td></td>
-                            <td class="points">71.0 pts</td>
+                            <td class="points">68.0 pts</td>
                         </tr>
                     </tbody>
                 </table>
@@ -613,7 +734,7 @@
                 <div class="forecast-grid">
                     <div class="forecast-card">
                         <div class="forecast-label">Total Story Points</div>
-                        <div class="forecast-value">71.0</div>
+                        <div class="forecast-value">68.0</div>
                     </div>
                     <div class="forecast-card">
                         <div class="forecast-label">Adjusted Velocity</div>
@@ -631,7 +752,7 @@
                         <strong>Formula:</strong> Total Points ÷ Average Velocity = Sprints Needed
                     </div>
                     <div class="calculation-step">
-                        71.0 pts ÷ 15.0 pts/sprint = 4.73 sprints
+                        68.0 pts ÷ 15.0 pts/sprint = 4.53 sprints
                     </div>
                     <div class="calculation-step">
                         <strong>Rounded Up:</strong> 5 sprints (always round up)
@@ -660,6 +781,25 @@
                     <div class="health-icon">🟢</div>
                     <div class="health-text">PROJECT HEALTH: 🟢 HEALTHY</div>
                     <div class="health-description">On track with 27 days buffer</div>
+                </div>
+            </div>
+            
+
+            <!-- AI Summary Button -->
+            <div class="ai-btn-wrap">
+                <button class="ai-toggle-btn" onclick="toggleAI(1)">
+                    🤖 View AI Forecast Summary
+                </button>
+            </div>
+
+            <!-- AI Summary Collapsible Panel -->
+            
+            <div class="ai-panel" id="ai-panel-1">
+                <div class="section">
+                    <p style="color:#888;text-align:center;padding:20px 0;">
+                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
+                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
+                    </p>
                 </div>
             </div>
             
@@ -845,6 +985,25 @@
             </div>
             
 
+            <!-- AI Summary Button -->
+            <div class="ai-btn-wrap">
+                <button class="ai-toggle-btn" onclick="toggleAI(2)">
+                    🤖 View AI Forecast Summary
+                </button>
+            </div>
+
+            <!-- AI Summary Collapsible Panel -->
+            
+            <div class="ai-panel" id="ai-panel-2">
+                <div class="section">
+                    <p style="color:#888;text-align:center;padding:20px 0;">
+                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
+                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
+                    </p>
+                </div>
+            </div>
+            
+
         </div>
         
 
@@ -864,6 +1023,19 @@
             document.querySelectorAll('.tab-btn').forEach((b, i) => {
                 b.classList.toggle('active', i === idx);
             });
+        }
+
+        function toggleAI(idx) {
+            const panel = document.getElementById('ai-panel-' + idx);
+            const btn   = document.querySelector('#panel-' + idx + ' .ai-toggle-btn');
+            const isOpen = panel.classList.contains('open');
+            panel.classList.toggle('open');
+            btn.textContent = isOpen
+                ? '🤖 View AI Forecast Summary'
+                : '🤖 Hide AI Forecast Summary';
+            if (!isOpen) {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     </script>
 </body>
