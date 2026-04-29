@@ -404,7 +404,7 @@
         <!-- Header -->
         <div class="header">
             <h1>📊 JIRA EPIC FORECAST REPORT</h1>
-            <p class="subtitle">Generated on 2026-04-29 13:20:03</p>
+            <p class="subtitle">Generated on 2026-04-29 13:27:59</p>
         </div>
 
         <!-- Project Tabs -->
@@ -606,10 +606,160 @@
             
             <div class="ai-panel" id="ai-panel-0">
                 <div class="section">
-                    <p style="color:#888;text-align:center;padding:20px 0;">
-                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
-                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
-                    </p>
+                    <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
+
+                    <!-- Overview -->
+                    <div class="ai-overview">The project is slightly behind schedule with a calculated completion date of July 22, 2026, one day past the planned target. Current velocity trends indicate a need for focused risk mitigation and scope management to meet the target date.</div>
+
+                    <!-- Future Sprint Plan -->
+                    <p class="ai-section-heading">📅 Future Sprint Plan</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:190px">Sprint</th>
+                                <th style="width:90px;text-align:right">Points</th>
+                                <th>Planned Work</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 9 (2026-04-17 - 2026-04-29)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Initial focus on MDDB and Med-File epics</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 10 (2026-05-01 - 2026-05-13)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Continue MDDB and Med-File, start on MSC Web Services</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 11 (2026-05-15 - 2026-05-27)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Focus on MSC API and regression issues</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 12 (2026-05-29 - 2026-06-10)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Address remaining Med-File and MDDB items</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 13 (2026-06-12 - 2026-06-24)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Finalize MSC Web Services and regression tasks</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 14 (2026-06-26 - 2026-07-08)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Complete release activities and pre-deployment tasks</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 15 (2026-07-10 - 2026-07-22)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">13 pts</td>
+                                <td style="color:#444;font-size:0.95em">Final QA and deployment readiness</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Epic Risk Assessment -->
+                    <p class="ai-section-heading">⚠️ Epic Risk Assessment</p>
+                    <div class="risk-grid">
+                        
+                        <div class="risk-card risk-high">
+                            <div class="risk-title">
+                                🔴 <strong>MREF-5460</strong>
+                                <span class="risk-badge high">HIGH</span>
+                                <span style="float:right;font-weight:700;color:#555">57.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">Dollar field expansion: Existing pricing products and r</div>
+                            <div class="risk-detail">Significant unassigned work (e.g., MREF-5672, MREF-5670) and many issues in &#39;New&#39; status. Requires immediate grooming and assignment.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-medium">
+                            <div class="risk-title">
+                                🟡 <strong>MREF-5190</strong>
+                                <span class="risk-badge medium">MEDIUM</span>
+                                <span style="float:right;font-weight:700;color:#555">19.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">Dollar field expansion: MDDB</div>
+                            <div class="risk-detail">Some progress with issues in &#39;Ready for QA&#39; and &#39;In Progress,&#39; but multiple unassigned items (e.g., MREF-6786, MREF-6195) need attention.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-low">
+                            <div class="risk-title">
+                                🟢 <strong>MREF-5201</strong>
+                                <span class="risk-badge low">LOW</span>
+                                <span style="float:right;font-weight:700;color:#555">8.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">Dollar field expansion: Med-File</div>
+                            <div class="risk-detail">Relatively small scope with most issues assigned and progressing. Minimal risk if current pace is maintained.</div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- What-If Scenarios -->
+                    <p class="ai-section-heading">🔀 What-If Scenarios</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:180px">Scenario</th>
+                                <th>Condition</th>
+                                <th style="width:160px">Est. Completion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><strong>🔴 Status Quo</strong></td>
+                                <td style="color:#555">No changes, velocity stays flat</td>
+                                <td style="font-weight:700;color:#667eea">July 22, 2026</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟡 Velocity +20%</strong></td>
+                                <td style="color:#555">Team consistently delivers 20% more</td>
+                                <td style="font-weight:700;color:#667eea">July 8, 2026</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟢 Scope Reduction</strong></td>
+                                <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
+                                <td style="font-weight:700;color:#667eea">July 8, 2026</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>✅ Best Case</strong></td>
+                                <td style="color:#555">Velocity boost AND scope reduction</td>
+                                <td style="font-weight:700;color:#667eea">June 24, 2026</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Recommendations -->
+                    <p class="ai-section-heading">✅ Recommendations</p>
+                    <ul class="rec-list">
+                        
+                        <li>Immediately groom and assign unassigned issues in MREF-5460, such as MREF-5672 and MREF-5670, to reduce bottlenecks.</li>
+                        
+                        <li>Focus on completing high-priority &#39;In Progress&#39; tasks like MREF-6585 and MREF-5205 to maintain momentum.</li>
+                        
+                        <li>Reassess and potentially defer low-priority items such as MREF-5561 and MREF-5559 to create buffer for critical tasks.</li>
+                        
+                        <li>Increase QA readiness by prioritizing issues in &#39;Ready for QA&#39; status, such as MREF-5424 and MREF-5300.</li>
+                        
+                        <li>Conduct a mid-sprint review to ensure velocity trends are improving and adjust scope or assignments as needed.</li>
+                        
+                        <li>Engage with unassigned contributors to expedite progress on critical &#39;New&#39; issues like MREF-6786 and MREF-5939.</li>
+                        
+                    </ul>
                 </div>
             </div>
             
@@ -796,10 +946,158 @@
             
             <div class="ai-panel" id="ai-panel-1">
                 <div class="section">
-                    <p style="color:#888;text-align:center;padding:20px 0;">
-                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
-                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
-                    </p>
+                    <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
+
+                    <!-- Overview -->
+                    <div class="ai-overview">The MREF - FF Installer project is currently forecasted to complete by 2026-06-24, which is 27 buffer days ahead of the planned target date of 2026-07-21. However, risks related to unassigned issues and low velocity need to be mitigated to ensure timely delivery.</div>
+
+                    <!-- Future Sprint Plan -->
+                    <p class="ai-section-heading">📅 Future Sprint Plan</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:190px">Sprint</th>
+                                <th style="width:90px;text-align:right">Points</th>
+                                <th>Planned Work</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 9 (2026-04-17 - 2026-04-29)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">15 pts</td>
+                                <td style="color:#444;font-size:0.95em">Finalizing key tasks in MREF-4564 and MREF-4491</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 10 (2026-05-01 - 2026-05-13)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">15 pts</td>
+                                <td style="color:#444;font-size:0.95em">Addressing unassigned issues and grooming backlog</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 11 (2026-05-15 - 2026-05-27)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">15 pts</td>
+                                <td style="color:#444;font-size:0.95em">Focus on MREF-4564 and MREF-4491 completion</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 12 (2026-05-29 - 2026-06-10)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">15 pts</td>
+                                <td style="color:#444;font-size:0.95em">Resolve remaining issues in MREF-4564 and MREF-4491</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 13 (2026-06-12 - 2026-06-24)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">7 pts</td>
+                                <td style="color:#444;font-size:0.95em">Final testing and observability tasks in MREF-3613</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Epic Risk Assessment -->
+                    <p class="ai-section-heading">⚠️ Epic Risk Assessment</p>
+                    <div class="risk-grid">
+                        
+                        <div class="risk-card risk-high">
+                            <div class="risk-title">
+                                🔴 <strong>MREF-4564</strong>
+                                <span class="risk-badge high">HIGH</span>
+                                <span style="float:right;font-weight:700;color:#555">39.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Deliver flat files to the customers</div>
+                            <div class="risk-detail">Many issues are unassigned, and several are in &#39;New&#39; status. Key tasks like regression testing (MREF-3851) and deployment planning (MREF-3850) are not yet started.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-medium">
+                            <div class="risk-title">
+                                🟡 <strong>MREF-4491</strong>
+                                <span class="risk-badge medium">MEDIUM</span>
+                                <span style="float:right;font-weight:700;color:#555">25.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Common functions</div>
+                            <div class="risk-detail">Significant portion of issues are unassigned or in &#39;New&#39; status, including critical tasks like performance measurement (MREF-6227) and encryption (MREF-4469).</div>
+                        </div>
+                        
+                        <div class="risk-card risk-low">
+                            <div class="risk-title">
+                                🟢 <strong>MREF-3613</strong>
+                                <span class="risk-badge low">LOW</span>
+                                <span style="float:right;font-weight:700;color:#555">2.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Observability and analytics</div>
+                            <div class="risk-detail">Minimal remaining work, but issue MREF-3793 is in &#39;Need More Info&#39; status, which could delay completion.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-low">
+                            <div class="risk-title">
+                                🟢 <strong>MREF-4487</strong>
+                                <span class="risk-badge low">LOW</span>
+                                <span style="float:right;font-weight:700;color:#555">0.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Install locally downloaded files</div>
+                            <div class="risk-detail">No remaining story points; this epic is effectively complete.</div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- What-If Scenarios -->
+                    <p class="ai-section-heading">🔀 What-If Scenarios</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:180px">Scenario</th>
+                                <th>Condition</th>
+                                <th style="width:160px">Est. Completion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><strong>🔴 Status Quo</strong></td>
+                                <td style="color:#555">No changes, velocity stays flat</td>
+                                <td style="font-weight:700;color:#667eea">2026-06-24</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟡 Velocity +20%</strong></td>
+                                <td style="color:#555">Team consistently delivers 20% more</td>
+                                <td style="font-weight:700;color:#667eea">2026-06-10</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟢 Scope Reduction</strong></td>
+                                <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
+                                <td style="font-weight:700;color:#667eea">2026-06-10</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>✅ Best Case</strong></td>
+                                <td style="color:#555">Velocity boost AND scope reduction</td>
+                                <td style="font-weight:700;color:#667eea">2026-05-27</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Recommendations -->
+                    <p class="ai-section-heading">✅ Recommendations</p>
+                    <ul class="rec-list">
+                        
+                        <li>Assign unassigned issues in MREF-4564 (e.g., MREF-3851, MREF-3850) and MREF-4491 (e.g., MREF-6227, MREF-4469) to ensure progress.</li>
+                        
+                        <li>Prioritize regression testing (MREF-3851) and deployment planning (MREF-3850) in MREF-4564 to mitigate delivery risks.</li>
+                        
+                        <li>Groom backlog items in &#39;New&#39; status, such as MREF-4414 and MREF-6227, to ensure they are ready for upcoming sprints.</li>
+                        
+                        <li>Increase focus on velocity improvements by addressing blockers and improving team commitment consistency.</li>
+                        
+                        <li>Defer or re-prioritize lower-impact issues like MREF-4418 and MREF-4382 to create buffer for higher-priority tasks.</li>
+                        
+                        <li>Ensure &#39;Need More Info&#39; issue MREF-3793 in MREF-3613 is resolved promptly to avoid delays in observability tasks.</li>
+                        
+                    </ul>
                 </div>
             </div>
             
@@ -996,10 +1294,172 @@
             
             <div class="ai-panel" id="ai-panel-2">
                 <div class="section">
-                    <p style="color:#888;text-align:center;padding:20px 0;">
-                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
-                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
-                    </p>
+                    <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
+
+                    <!-- Overview -->
+                    <div class="ai-overview">The MGLOBAL - Phase II Petmeds project is on track to meet its planned target date of 2026-06-10, with no buffer days remaining. However, risks related to unassigned issues and inconsistent velocity should be addressed to ensure timely delivery.</div>
+
+                    <!-- Future Sprint Plan -->
+                    <p class="ai-section-heading">📅 Future Sprint Plan</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:190px">Sprint</th>
+                                <th style="width:90px;text-align:right">Points</th>
+                                <th>Planned Work</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 9 (2026-04-17 - 2026-04-29)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">44.67 pts</td>
+                                <td style="color:#444;font-size:0.95em">Key focus on high-priority issues across all epics</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 10 (2026-05-01 - 2026-05-13)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">44.67 pts</td>
+                                <td style="color:#444;font-size:0.95em">Continue addressing remaining issues in MGLOBAL-4846 and MGLOBAL-4342</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 11 (2026-05-15 - 2026-05-27)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">44.67 pts</td>
+                                <td style="color:#444;font-size:0.95em">Finalize work on MGLOBAL-4305 and MGLOBAL-5509</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="sprint-num-ai">Sprint 12 (2026-05-29 - 2026-06-10)</span></td>
+                                <td style="text-align:right;font-weight:700;color:#764ba2">8.99 pts</td>
+                                <td style="color:#444;font-size:0.95em">Wrap up remaining issues in MGLOBAL-4640 and MGLOBAL-4639</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Epic Risk Assessment -->
+                    <p class="ai-section-heading">⚠️ Epic Risk Assessment</p>
+                    <div class="risk-grid">
+                        
+                        <div class="risk-card risk-medium">
+                            <div class="risk-title">
+                                🟡 <strong>MGLOBAL-4846</strong>
+                                <span class="risk-badge medium">MEDIUM</span>
+                                <span style="float:right;font-weight:700;color:#555">56.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Phase 2 Deploy to Prod</div>
+                            <div class="risk-detail">Multiple unassigned issues and several in &#39;New&#39; status may delay progress.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-high">
+                            <div class="risk-title">
+                                🔴 <strong>MGLOBAL-4342</strong>
+                                <span class="risk-badge high">HIGH</span>
+                                <span style="float:right;font-weight:700;color:#555">44.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Allergens</div>
+                            <div class="risk-detail">High number of unassigned issues, many in &#39;New&#39; status, and critical bugs not yet resolved.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-medium">
+                            <div class="risk-title">
+                                🟡 <strong>MGLOBAL-4305</strong>
+                                <span class="risk-badge medium">MEDIUM</span>
+                                <span style="float:right;font-weight:700;color:#555">35.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Contraindications</div>
+                            <div class="risk-detail">Several issues in &#39;New&#39; and &#39;In Progress&#39; status, with limited assignee coverage.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-low">
+                            <div class="risk-title">
+                                🟢 <strong>MGLOBAL-5509</strong>
+                                <span class="risk-badge low">LOW</span>
+                                <span style="float:right;font-weight:700;color:#555">27.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Deferred to Phase 2</div>
+                            <div class="risk-detail">Most issues are groomed or ready for QA, with minimal unassigned work.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-low">
+                            <div class="risk-title">
+                                🟢 <strong>MGLOBAL-4640</strong>
+                                <span class="risk-badge low">LOW</span>
+                                <span style="float:right;font-weight:700;color:#555">8.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds Look up: Conditions</div>
+                            <div class="risk-detail">Small scope with issues in advanced statuses like &#39;Ready for Acceptance&#39;.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-low">
+                            <div class="risk-title">
+                                🟢 <strong>MGLOBAL-4639</strong>
+                                <span class="risk-badge low">LOW</span>
+                                <span style="float:right;font-weight:700;color:#555">6.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds Look up: Common allergens</div>
+                            <div class="risk-detail">Minimal scope and manageable workload, though some issues remain unassigned.</div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- What-If Scenarios -->
+                    <p class="ai-section-heading">🔀 What-If Scenarios</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:180px">Scenario</th>
+                                <th>Condition</th>
+                                <th style="width:160px">Est. Completion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><strong>🔴 Status Quo</strong></td>
+                                <td style="color:#555">No changes, velocity stays flat</td>
+                                <td style="font-weight:700;color:#667eea">2026-06-10</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟡 Velocity +20%</strong></td>
+                                <td style="color:#555">Team consistently delivers 20% more</td>
+                                <td style="font-weight:700;color:#667eea">2026-05-29</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟢 Scope Reduction</strong></td>
+                                <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
+                                <td style="font-weight:700;color:#667eea">2026-05-29</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>✅ Best Case</strong></td>
+                                <td style="color:#555">Velocity boost AND scope reduction</td>
+                                <td style="font-weight:700;color:#667eea">2026-05-17</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Recommendations -->
+                    <p class="ai-section-heading">✅ Recommendations</p>
+                    <ul class="rec-list">
+                        
+                        <li>Assign unassigned issues in MGLOBAL-4342 (e.g., MGLOBAL-7696, MGLOBAL-7690) to ensure progress on critical bugs.</li>
+                        
+                        <li>Prioritize grooming and moving &#39;New&#39; issues in MGLOBAL-4846 (e.g., MGLOBAL-7670, MGLOBAL-7667) to &#39;In Progress&#39; to avoid bottlenecks.</li>
+                        
+                        <li>Focus on resolving high-priority &#39;In Progress&#39; issues in MGLOBAL-4305 (e.g., MGLOBAL-7445, MGLOBAL-7391) to maintain momentum.</li>
+                        
+                        <li>Complete &#39;Ready for QA&#39; and &#39;Ready for Acceptance&#39; issues in MGLOBAL-4640 and MGLOBAL-4639 (e.g., MGLOBAL-7440, MGLOBAL-5441) to close smaller epics early.</li>
+                        
+                        <li>Monitor velocity trends and address any blockers impacting team performance, as recent sprints show inconsistent delivery rates.</li>
+                        
+                        <li>Defer or re-prioritize low-impact issues in MGLOBAL-5509 (e.g., MGLOBAL-4880, MGLOBAL-4622) if delays arise in higher-risk epics.</li>
+                        
+                    </ul>
                 </div>
             </div>
             
