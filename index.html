@@ -447,6 +447,223 @@
             .target-date { font-size: 1.8em; }
             .risk-grid { grid-template-columns: 1fr; }
         }
+
+        /* ── AI Chat Sidebar ──────────────────────────────────────── */
+        .chat-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102,126,234,0.55);
+            z-index: 1001;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(102,126,234,0.7); }
+
+        .chat-sidebar {
+            position: fixed;
+            right: 0; top: 0; bottom: 0;
+            width: 420px;
+            max-width: 100vw;
+            background: #fff;
+            box-shadow: -4px 0 30px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        .chat-sidebar.open { transform: translateX(0); }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .chat-header h3 { margin: 0; font-size: 1em; font-weight: 700; flex: 1; }
+        .chat-project-tag {
+            font-size: 0.72em;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 9px;
+            border-radius: 11px;
+            max-width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .chat-header-btns { display: flex; gap: 6px; }
+        .chat-icon-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.85);
+            font-size: 1em;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+        .chat-icon-btn:hover { background: rgba(255,255,255,0.2); color: white; }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #fafbff;
+        }
+        .chat-bubble {
+            max-width: 88%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.9em;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        .chat-bubble.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-bottom-right-radius: 3px;
+        }
+        .chat-bubble.assistant {
+            align-self: flex-start;
+            background: #fff;
+            color: #333;
+            border-bottom-left-radius: 3px;
+            border: 1px solid #e0e6ff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .chat-bubble.assistant strong { color: #667eea; }
+        .chat-bubble.assistant code {
+            background: #eef0ff;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+        .chat-bubble.assistant ul { margin: 6px 0 6px 16px; padding: 0; }
+        .chat-bubble.assistant li { margin: 3px 0; }
+        .chat-bubble.error {
+            align-self: flex-start;
+            background: #fff0f0;
+            color: #c00;
+            border: 1px solid #fcc;
+            font-size: 0.85em;
+        }
+
+        .chat-typing {
+            align-self: flex-start;
+            background: #fff;
+            border: 1px solid #e0e6ff;
+            padding: 10px 16px;
+            border-radius: 14px;
+            border-bottom-left-radius: 3px;
+            display: none;
+            gap: 5px;
+            align-items: center;
+        }
+        .chat-typing.visible { display: flex; }
+        .chat-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #764ba2;
+            animation: chatBounce 1.2s infinite;
+        }
+        .chat-dot:nth-child(2) { animation-delay: 0.2s; }
+        .chat-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes chatBounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-7px)} }
+
+        .chat-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 16px;
+            border-top: 1px solid #f0f0f8;
+            flex-shrink: 0;
+            background: #fafbff;
+        }
+        .suggestion-chip {
+            background: #eef0ff;
+            color: #4a5aed;
+            border: 1px solid #c5cbf5;
+            border-radius: 14px;
+            padding: 5px 11px;
+            font-size: 0.77em;
+            cursor: pointer;
+            transition: background 0.15s;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .suggestion-chip:hover { background: #dde0ff; }
+
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+            padding: 10px 14px 14px;
+            border-top: 1px solid #eee;
+            flex-shrink: 0;
+            background: #fff;
+            align-items: flex-end;
+        }
+        .chat-input {
+            flex: 1;
+            border: 1px solid #dde0ff;
+            border-radius: 20px;
+            padding: 9px 15px;
+            font-size: 0.9em;
+            outline: none;
+            resize: none;
+            max-height: 100px;
+            font-family: inherit;
+            line-height: 1.4;
+            transition: border-color 0.2s;
+            background: #fafbff;
+        }
+        .chat-input:focus { border-color: #667eea; background: #fff; }
+        .chat-send-btn {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: opacity 0.2s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-send-btn:hover:not(:disabled) { transform: scale(1.08); }
+        .chat-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+        .chat-server-note {
+            font-size: 0.75em;
+            color: #999;
+            text-align: center;
+            padding: 4px 16px 0;
+        }
+
+        @media (max-width: 480px) {
+            .chat-sidebar { width: 100vw; }
+            .chat-fab { bottom: 16px; right: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -454,7 +671,7 @@
         <!-- Header -->
         <div class="header">
             <h1>📊 JIRA EPIC FORECAST REPORT</h1>
-            <p class="subtitle">Generated on 2026-05-05 14:41:25</p>
+            <p class="subtitle">Generated on 2026-05-05 14:56:06</p>
         </div>
 
         <!-- Project Tabs -->
@@ -656,7 +873,7 @@
             
             <script>
             (window._aiData = window._aiData || [])[0] = {
-                sprintLoad: [{"end_date": "2026-05-13", "issues": ["MREF-6786", "MREF-6621", "MREF-5205"], "points": 13, "risk_note": "Dependency on unassigned issues like MREF-6800 may cause delays.", "sprint": "Sprint 10", "start_date": "2026-05-01", "work": "Focus on MDDB and Med-File epics."}, {"end_date": "2026-05-27", "issues": ["MREF-6515", "MREF-5672", "MREF-5670"], "points": 13, "risk_note": "Unassigned issues in MSC Web Services (e.g., MREF-5666) pose a risk.", "sprint": "Sprint 11", "start_date": "2026-05-15", "work": "Continue MDDB and begin addressing MSC Web Services."}, {"end_date": "2026-06-10", "issues": ["MREF-5664", "MREF-5475", "MREF-5473"], "points": 13, "risk_note": "Regression issues may require additional testing time.", "sprint": "Sprint 12", "start_date": "2026-05-29", "work": "Focus on MSC API and regression activities."}, {"end_date": "2026-06-24", "issues": ["MREF-5368", "MREF-5298", "MREF-5420"], "points": 13, "risk_note": "Potential delays due to unassigned work in Med-File (e.g., MREF-5939).", "sprint": "Sprint 13", "start_date": "2026-06-12", "work": "Finalize MDDB and Med-File epics."}, {"end_date": "2026-07-08", "issues": ["MREF-5557", "MREF-5559", "MREF-5478"], "points": 13, "risk_note": "Coordination for release activities may introduce delays.", "sprint": "Sprint 14", "start_date": "2026-06-26", "work": "Address remaining MSC Web Services and API issues."}, {"end_date": "2026-07-22", "issues": ["MREF-5192", "MREF-5475", "MREF-5473"], "points": 13, "risk_note": "Final deployment readiness activities may encounter unforeseen blockers.", "sprint": "Sprint 15", "start_date": "2026-07-10", "work": "Finalize all remaining epics and prepare for deployment."}, {"end_date": "2026-08-05", "issues": ["MREF-5670", "MREF-5666"], "points": 6, "risk_note": "Post-release activities may require additional effort for stabilization.", "sprint": "Sprint 16", "start_date": "2026-07-24", "work": "Complete final deployment and post-release tasks."}],
+                sprintLoad: [{"end_date": "May 13 2026", "issues": ["MREF-6786", "MREF-6621", "MREF-5205"], "points": 13, "risk_note": "Several issues remain unassigned, which could delay progress.", "sprint": "Sprint 10", "start_date": "May 01 2026", "work": "Focus on MDDB (MREF-5190) and Med-File (MREF-5201) epics."}, {"end_date": "May 27 2026", "issues": ["MREF-6585", "MREF-6515", "MREF-5672"], "points": 13, "risk_note": "Dependencies on unassigned issues in MREF-5460 may create bottlenecks.", "sprint": "Sprint 11", "start_date": "May 14 2026", "work": "Continue work on MDDB epic and begin addressing MSC Web Services issues in MREF-5460."}, {"end_date": "Jun 10 2026", "issues": ["MREF-5666", "MREF-5664", "MREF-5473"], "points": 13, "risk_note": "Regression testing may require additional resources to stay on track.", "sprint": "Sprint 12", "start_date": "May 28 2026", "work": "Focus on regression fixes and release activities for MREF-5460."}, {"end_date": "Jun 24 2026", "issues": ["MREF-5478", "MREF-5475", "MREF-5557"], "points": 13, "risk_note": "Unassigned release activities could delay deployment readiness.", "sprint": "Sprint 13", "start_date": "Jun 11 2026", "work": "Address remaining release activities and validation tasks in MREF-5460."}, {"end_date": "Jul 08 2026", "issues": ["MREF-5368", "MREF-5298", "MREF-5420"], "points": 13, "risk_note": "Finalizing Med-File may require additional coordination with stakeholders.", "sprint": "Sprint 14", "start_date": "Jun 25 2026", "work": "Complete Med-File epic and finalize MDDB-related tasks."}, {"end_date": "Jul 22 2026", "issues": ["MREF-5192", "MREF-5559", "MREF-5561"], "points": 13, "risk_note": "Deployment readiness depends on timely completion of all pre-release activities.", "sprint": "Sprint 15", "start_date": "Jul 09 2026", "work": "Finalize remaining tasks in MREF-5460 and prepare for deployment."}, {"end_date": "Aug 05 2026", "issues": ["MREF-5939", "MREF-6370"], "points": 6, "risk_note": "Final deployment tasks may face delays if earlier sprints slip.", "sprint": "Sprint 16", "start_date": "Jul 23 2026", "work": "Address final deployment tasks and close out remaining issues."}],
                 total: 81.0
             };
             </script>
@@ -665,11 +882,11 @@
                     <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
 
                     <!-- Overview + Velocity Trend -->
-                    <div class="ai-overview">The project is currently behind schedule by 15 days, with a calculated completion date of 2026-08-05, exceeding the planned target date of 2026-07-21. The team’s velocity trend is stable, but risks in unassigned work and dependencies may impact delivery timelines.</div>
+                    <div class="ai-overview">The project is behind schedule by 15 days, with a calculated completion date of 2026-08-05, exceeding the planned target date of 2026-07-21. The team&#39;s velocity is stable but low, requiring focused improvements or scope adjustments to meet deadlines.</div>
                     
                     <div class="trend-badge trend-stable">
                         📊 Velocity STABLE
-                         — The team&#39;s velocity has consistently averaged 13 points per sprint over the last three sprints.
+                         — Velocity has remained consistent at an average of 13 points per sprint over the last three sprints.
                     </div>
                     
 
@@ -699,7 +916,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 10</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-05-01 – 2026-05-13</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">May 01 2026 – May 13 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -712,8 +929,8 @@
                                 <td>
                                     <span class="issue-chip">MREF-6786</span> <span class="issue-chip">MREF-6621</span> <span class="issue-chip">MREF-5205</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Focus on MDDB and Med-File epics.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Dependency on unassigned issues like MREF-6800 may cause delays.</td>
+                                <td style="color:#444;font-size:0.93em">Focus on MDDB (MREF-5190) and Med-File (MREF-5201) epics.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Several issues remain unassigned, which could delay progress.</td>
                             </tr>
                             
                             
@@ -724,7 +941,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 11</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-05-15 – 2026-05-27</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">May 14 2026 – May 27 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -735,10 +952,10 @@
                                     55.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-6515</span> <span class="issue-chip">MREF-5672</span> <span class="issue-chip">MREF-5670</span> 
+                                    <span class="issue-chip">MREF-6585</span> <span class="issue-chip">MREF-6515</span> <span class="issue-chip">MREF-5672</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Continue MDDB and begin addressing MSC Web Services.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Unassigned issues in MSC Web Services (e.g., MREF-5666) pose a risk.</td>
+                                <td style="color:#444;font-size:0.93em">Continue work on MDDB epic and begin addressing MSC Web Services issues in MREF-5460.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Dependencies on unassigned issues in MREF-5460 may create bottlenecks.</td>
                             </tr>
                             
                             
@@ -749,7 +966,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 12</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-05-29 – 2026-06-10</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">May 28 2026 – Jun 10 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -760,10 +977,10 @@
                                     42.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-5664</span> <span class="issue-chip">MREF-5475</span> <span class="issue-chip">MREF-5473</span> 
+                                    <span class="issue-chip">MREF-5666</span> <span class="issue-chip">MREF-5664</span> <span class="issue-chip">MREF-5473</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Focus on MSC API and regression activities.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Regression issues may require additional testing time.</td>
+                                <td style="color:#444;font-size:0.93em">Focus on regression fixes and release activities for MREF-5460.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Regression testing may require additional resources to stay on track.</td>
                             </tr>
                             
                             
@@ -774,7 +991,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 13</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-06-12 – 2026-06-24</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Jun 11 2026 – Jun 24 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -785,10 +1002,10 @@
                                     29.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-5368</span> <span class="issue-chip">MREF-5298</span> <span class="issue-chip">MREF-5420</span> 
+                                    <span class="issue-chip">MREF-5478</span> <span class="issue-chip">MREF-5475</span> <span class="issue-chip">MREF-5557</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Finalize MDDB and Med-File epics.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Potential delays due to unassigned work in Med-File (e.g., MREF-5939).</td>
+                                <td style="color:#444;font-size:0.93em">Address remaining release activities and validation tasks in MREF-5460.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Unassigned release activities could delay deployment readiness.</td>
                             </tr>
                             
                             
@@ -799,7 +1016,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 14</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-06-26 – 2026-07-08</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Jun 25 2026 – Jul 08 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -810,10 +1027,10 @@
                                     16.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-5557</span> <span class="issue-chip">MREF-5559</span> <span class="issue-chip">MREF-5478</span> 
+                                    <span class="issue-chip">MREF-5368</span> <span class="issue-chip">MREF-5298</span> <span class="issue-chip">MREF-5420</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Address remaining MSC Web Services and API issues.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Coordination for release activities may introduce delays.</td>
+                                <td style="color:#444;font-size:0.93em">Complete Med-File epic and finalize MDDB-related tasks.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Finalizing Med-File may require additional coordination with stakeholders.</td>
                             </tr>
                             
                             
@@ -824,7 +1041,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 15</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-07-10 – 2026-07-22</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Jul 09 2026 – Jul 22 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -835,10 +1052,10 @@
                                     3.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-5192</span> <span class="issue-chip">MREF-5475</span> <span class="issue-chip">MREF-5473</span> 
+                                    <span class="issue-chip">MREF-5192</span> <span class="issue-chip">MREF-5559</span> <span class="issue-chip">MREF-5561</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Finalize all remaining epics and prepare for deployment.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Final deployment readiness activities may encounter unforeseen blockers.</td>
+                                <td style="color:#444;font-size:0.93em">Finalize remaining tasks in MREF-5460 and prepare for deployment.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Deployment readiness depends on timely completion of all pre-release activities.</td>
                             </tr>
                             
                             
@@ -849,7 +1066,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 16</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-07-24 – 2026-08-05</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Jul 23 2026 – Aug 05 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -860,10 +1077,10 @@
                                     0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-5670</span> <span class="issue-chip">MREF-5666</span> 
+                                    <span class="issue-chip">MREF-5939</span> <span class="issue-chip">MREF-6370</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Complete final deployment and post-release tasks.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Post-release activities may require additional effort for stabilization.</td>
+                                <td style="color:#444;font-size:0.93em">Address final deployment tasks and close out remaining issues.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Final deployment tasks may face delays if earlier sprints slip.</td>
                             </tr>
                             
                         </tbody>
@@ -887,7 +1104,7 @@
                                 <span style="float:right;font-weight:700;color:#555">57.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">Dollar field expansion: Existing pricing products and r</div>
-                            <div class="risk-detail">Significant unassigned work (e.g., MREF-5478, MREF-5666) and dependencies on regression activities increase risk.</div>
+                            <div class="risk-detail">Many issues are unassigned, and several are in &#39;New&#39; status with no progress, posing a significant risk to timely completion.</div>
                         </div>
                         
                         <div class="risk-card risk-medium">
@@ -897,7 +1114,7 @@
                                 <span style="float:right;font-weight:700;color:#555">18.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">Dollar field expansion: MDDB</div>
-                            <div class="risk-detail">Several issues are in progress, but unassigned tasks like MREF-6800 and MREF-6195 could delay completion.</div>
+                            <div class="risk-detail">Some issues are unassigned, but progress is being made on key tasks. Dependencies on other epics could create delays.</div>
                         </div>
                         
                         <div class="risk-card risk-low">
@@ -907,7 +1124,7 @@
                                 <span style="float:right;font-weight:700;color:#555">6.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">Dollar field expansion: Med-File</div>
-                            <div class="risk-detail">Most issues are small and manageable, but unassigned work like MREF-5939 should be addressed promptly.</div>
+                            <div class="risk-detail">This epic has fewer points remaining, and most tasks are either in progress or assigned, indicating lower risk.</div>
                         </div>
                         
                     </div>
@@ -927,25 +1144,25 @@
                             <tr>
                                 <td><strong>🔴 Status Quo</strong></td>
                                 <td style="color:#555">No changes, velocity stays flat</td>
-                                <td style="font-weight:700;color:#667eea">2026-08-05</td>
+                                <td style="font-weight:700;color:#667eea">August 05, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>🟡 Velocity +20%</strong></td>
                                 <td style="color:#555">Team consistently delivers 20% more</td>
-                                <td style="font-weight:700;color:#667eea">2026-07-24</td>
+                                <td style="font-weight:700;color:#667eea">July 25, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>🟢 Scope Reduction</strong></td>
                                 <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
-                                <td style="font-weight:700;color:#667eea">2026-07-22</td>
+                                <td style="font-weight:700;color:#667eea">July 21, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>✅ Best Case</strong></td>
                                 <td style="color:#555">Velocity boost AND scope reduction</td>
-                                <td style="font-weight:700;color:#667eea">2026-07-10</td>
+                                <td style="font-weight:700;color:#667eea">July 15, 2026</td>
                             </tr>
                             
                         </tbody>
@@ -955,15 +1172,15 @@
                     <p class="ai-section-heading">✅ Recommendations</p>
                     <ul class="rec-list">
                         
-                        <li>Assign unassigned issues in MREF-5460 (e.g., MREF-5478, MREF-5666) to reduce risk.</li>
+                        <li>Assign unassigned issues in MREF-5460 (e.g., MREF-5672, MREF-5666) to reduce risk of delays.</li>
                         
-                        <li>Prioritize regression activities in MREF-5460 to avoid downstream delays.</li>
+                        <li>Focus on completing high-priority tasks in MREF-5190, such as MREF-6786 and MREF-6585, to maintain momentum.</li>
                         
-                        <li>Focus on completing in-progress MDDB tasks like MREF-6786 and MREF-6585 to accelerate progress.</li>
+                        <li>Conduct a grooming session to break down and estimate unpointed issues like MREF-5939 and MREF-6370.</li>
                         
-                        <li>Defer low-priority items in MREF-5460 (e.g., MREF-5559, MREF-5557) to reduce scope.</li>
+                        <li>Reassess the feasibility of completing all regression tasks in MREF-5460 within the current timeline.</li>
                         
-                        <li>Ensure Med-File unassigned issues (e.g., MREF-5939) are addressed to avoid last-minute delays.</li>
+                        <li>Consider deferring lower-priority tasks in MREF-5460, such as MREF-5559 and MREF-5561, to focus on critical path items.</li>
                         
                         <li>Increase team capacity or reallocate resources to improve velocity and meet the planned target date.</li>
                         
@@ -992,13 +1209,13 @@
                         <tr>
                             <td><span class="epic-key">MREF-4564</span></td>
                             <td>FF installer: Deliver flat files to the customers</td>
-                            <td class="points">36.0 pts</td>
+                            <td class="points">33.0 pts</td>
                         </tr>
                         
                         <tr>
                             <td><span class="epic-key">MREF-4491</span></td>
                             <td>FF installer: Common functions</td>
-                            <td class="points">30.0 pts</td>
+                            <td class="points">27.0 pts</td>
                         </tr>
                         
                         <tr>
@@ -1016,7 +1233,7 @@
                         <tr class="total-row">
                             <td><strong>TOTAL</strong></td>
                             <td></td>
-                            <td class="points">69.0 pts</td>
+                            <td class="points">63.0 pts</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1092,7 +1309,7 @@
                 <div class="forecast-grid">
                     <div class="forecast-card">
                         <div class="forecast-label">Total Story Points</div>
-                        <div class="forecast-value">69.0</div>
+                        <div class="forecast-value">63.0</div>
                     </div>
                     <div class="forecast-card">
                         <div class="forecast-label">Adjusted Velocity</div>
@@ -1110,7 +1327,7 @@
                         <strong>Formula:</strong> Total Points ÷ Average Velocity = Sprints Needed
                     </div>
                     <div class="calculation-step">
-                        69.0 pts ÷ 15.0 pts/sprint = 4.6 sprints
+                        63.0 pts ÷ 15.0 pts/sprint = 4.2 sprints
                     </div>
                     <div class="calculation-step">
                         <strong>Rounded Up:</strong> 5 sprints (always round up)
@@ -1154,8 +1371,8 @@
             
             <script>
             (window._aiData = window._aiData || [])[1] = {
-                sprintLoad: [{"end_date": "Mon May 29 2026", "issues": ["MREF-6790", "MREF-6224", "MREF-4416"], "points": 15, "risk_note": "Dependency on unassigned issues in MREF-4491 may delay progress.", "sprint": "Sprint 10", "start_date": "Mon May 15 2026", "work": "Focus on MREF-4491 and MREF-4564 epics."}, {"end_date": "Mon Jun 12 2026", "issues": ["MREF-6067", "MREF-5683", "MREF-3845"], "points": 15, "risk_note": "Risk of delays due to unassigned issues in MREF-4564.", "sprint": "Sprint 11", "start_date": "Mon May 29 2026", "work": "Continue work on MREF-4564 and MREF-4491 epics."}, {"end_date": "Mon Jun 26 2026", "issues": ["MREF-3851", "MREF-3850", "MREF-3793"], "points": 15, "risk_note": "Potential blockers in MREF-3613 due to unclear requirements.", "sprint": "Sprint 12", "start_date": "Mon Jun 12 2026", "work": "Address remaining issues in MREF-4564 and start work on MREF-3613."}, {"end_date": "Mon Jul 10 2026", "issues": ["MREF-4475", "MREF-4418", "MREF-4382"], "points": 15, "risk_note": "Risk of scope creep in MREF-4491 due to additional feature requests.", "sprint": "Sprint 13", "start_date": "Mon Jun 26 2026", "work": "Finalize work on MREF-4491 and MREF-4564."}, {"end_date": "Mon Jul 24 2026", "issues": ["MREF-3850", "MREF-3845", "MREF-4388"], "points": 9, "risk_note": "Final deployment may face delays if testing uncovers critical issues.", "sprint": "Sprint 14", "start_date": "Mon Jul 10 2026", "work": "Complete final testing and deployment tasks."}],
-                total: 69.0
+                sprintLoad: [{"end_date": "Mon May 13 2026", "issues": ["MREF-6790", "MREF-4416", "MREF-5683"], "points": 15, "risk_note": "Potential delays due to unassigned issues in MREF-4491.", "sprint": "Sprint 10", "start_date": "Mon May 01 2026", "work": "Focus on MREF-4491 and MREF-4564 epics."}, {"end_date": "Mon May 27 2026", "issues": ["MREF-4418", "MREF-4322", "MREF-3793"], "points": 15, "risk_note": "Dependency on clarifications for MREF-3793 (Need More Info).", "sprint": "Sprint 11", "start_date": "Mon May 15 2026", "work": "Continue progress on MREF-4564 and address MREF-3613."}, {"end_date": "Mon Jun 10 2026", "issues": ["MREF-4384", "MREF-3851", "MREF-3845"], "points": 15, "risk_note": "Regression testing may uncover additional issues, impacting timelines.", "sprint": "Sprint 12", "start_date": "Mon May 29 2026", "work": "Complete packaging and regression testing for MREF-4564."}, {"end_date": "Mon Jun 24 2026", "issues": ["MREF-3850", "MREF-3793", "MREF-3613"], "points": 15, "risk_note": "Deployment dependencies and observability data segregation require coordination.", "sprint": "Sprint 13", "start_date": "Mon Jun 12 2026", "work": "Finalize deployment and observability tasks."}, {"end_date": "Mon Jul 08 2026", "issues": ["MREF-4382", "MREF-6779"], "points": 3, "risk_note": "Final sprint may have idle capacity due to early completion.", "sprint": "Sprint 14", "start_date": "Mon Jun 26 2026", "work": "Wrap up remaining low-priority tasks."}],
+                total: 63.0
             };
             </script>
             <div class="ai-panel" id="ai-panel-1">
@@ -1163,11 +1380,11 @@
                     <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
 
                     <!-- Overview + Velocity Trend -->
-                    <div class="ai-overview">The MREF - FF Installer project is on track to meet its planned target date of 2026-07-21, with a calculated completion date of 2026-07-08. The team has a stable velocity of 15 points per sprint, and risks are primarily tied to unassigned issues and dependencies in key epics.</div>
+                    <div class="ai-overview">The project is on track to meet its planned target date of 2026-07-21 with a calculated completion date of 2026-07-08, providing a 13-day buffer. However, risks related to unassigned issues and dependencies need to be addressed to maintain the schedule.</div>
                     
                     <div class="trend-badge trend-stable">
                         📊 Velocity STABLE
-                         — The team&#39;s velocity has consistently averaged 15 points over the last three sprints.
+                         — The team&#39;s velocity has remained consistent, averaging 15 points per sprint over the last three sprints.
                     </div>
                     
 
@@ -1197,7 +1414,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 10</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 15 2026 – Mon May 29 2026</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 01 2026 – Mon May 13 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1205,13 +1422,13 @@
                                     <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:100%"></div></div>
                                 </td>
                                 <td style="text-align:right;font-weight:700;color:#667eea">
-                                    54.0 pts
+                                    48.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-6790</span> <span class="issue-chip">MREF-6224</span> <span class="issue-chip">MREF-4416</span> 
+                                    <span class="issue-chip">MREF-6790</span> <span class="issue-chip">MREF-4416</span> <span class="issue-chip">MREF-5683</span> 
                                 </td>
                                 <td style="color:#444;font-size:0.93em">Focus on MREF-4491 and MREF-4564 epics.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Dependency on unassigned issues in MREF-4491 may delay progress.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Potential delays due to unassigned issues in MREF-4491.</td>
                             </tr>
                             
                             
@@ -1222,7 +1439,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 11</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 29 2026 – Mon Jun 12 2026</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 15 2026 – Mon May 27 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1230,13 +1447,13 @@
                                     <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:100%"></div></div>
                                 </td>
                                 <td style="text-align:right;font-weight:700;color:#667eea">
-                                    39.0 pts
+                                    33.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-6067</span> <span class="issue-chip">MREF-5683</span> <span class="issue-chip">MREF-3845</span> 
+                                    <span class="issue-chip">MREF-4418</span> <span class="issue-chip">MREF-4322</span> <span class="issue-chip">MREF-3793</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Continue work on MREF-4564 and MREF-4491 epics.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Risk of delays due to unassigned issues in MREF-4564.</td>
+                                <td style="color:#444;font-size:0.93em">Continue progress on MREF-4564 and address MREF-3613.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Dependency on clarifications for MREF-3793 (Need More Info).</td>
                             </tr>
                             
                             
@@ -1247,7 +1464,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 12</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jun 12 2026 – Mon Jun 26 2026</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 29 2026 – Mon Jun 10 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1255,13 +1472,13 @@
                                     <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:100%"></div></div>
                                 </td>
                                 <td style="text-align:right;font-weight:700;color:#667eea">
-                                    24.0 pts
+                                    18.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-3851</span> <span class="issue-chip">MREF-3850</span> <span class="issue-chip">MREF-3793</span> 
+                                    <span class="issue-chip">MREF-4384</span> <span class="issue-chip">MREF-3851</span> <span class="issue-chip">MREF-3845</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Address remaining issues in MREF-4564 and start work on MREF-3613.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Potential blockers in MREF-3613 due to unclear requirements.</td>
+                                <td style="color:#444;font-size:0.93em">Complete packaging and regression testing for MREF-4564.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Regression testing may uncover additional issues, impacting timelines.</td>
                             </tr>
                             
                             
@@ -1272,7 +1489,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 13</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jun 26 2026 – Mon Jul 10 2026</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jun 12 2026 – Mon Jun 24 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1280,13 +1497,13 @@
                                     <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:100%"></div></div>
                                 </td>
                                 <td style="text-align:right;font-weight:700;color:#fd7e14">
-                                    9.0 pts
+                                    3.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-4475</span> <span class="issue-chip">MREF-4418</span> <span class="issue-chip">MREF-4382</span> 
+                                    <span class="issue-chip">MREF-3850</span> <span class="issue-chip">MREF-3793</span> <span class="issue-chip">MREF-3613</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Finalize work on MREF-4491 and MREF-4564.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Risk of scope creep in MREF-4491 due to additional feature requests.</td>
+                                <td style="color:#444;font-size:0.93em">Finalize deployment and observability tasks.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Deployment dependencies and observability data segregation require coordination.</td>
                             </tr>
                             
                             
@@ -1297,21 +1514,21 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 14</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jul 10 2026 – Mon Jul 24 2026</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jun 26 2026 – Mon Jul 08 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
-                                    <span style="font-weight:700;color:#764ba2">9 pts</span>
-                                    <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:60%"></div></div>
+                                    <span style="font-weight:700;color:#764ba2">3 pts</span>
+                                    <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:20%"></div></div>
                                 </td>
                                 <td style="text-align:right;font-weight:700;color:#28a745">
                                     0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MREF-3850</span> <span class="issue-chip">MREF-3845</span> <span class="issue-chip">MREF-4388</span> 
+                                    <span class="issue-chip">MREF-4382</span> <span class="issue-chip">MREF-6779</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Complete final testing and deployment tasks.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Final deployment may face delays if testing uncovers critical issues.</td>
+                                <td style="color:#444;font-size:0.93em">Wrap up remaining low-priority tasks.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Final sprint may have idle capacity due to early completion.</td>
                             </tr>
                             
                         </tbody>
@@ -1328,24 +1545,24 @@
                     <p class="ai-section-heading">⚠️ Epic Risk Assessment</p>
                     <div class="risk-grid">
                         
-                        <div class="risk-card risk-high">
-                            <div class="risk-title">
-                                🔴 <strong>MREF-4564</strong>
-                                <span class="risk-badge high">HIGH</span>
-                                <span style="float:right;font-weight:700;color:#555">36.0 pts</span>
-                            </div>
-                            <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Deliver flat files to the customers</div>
-                            <div class="risk-detail">Many issues are unassigned, and critical tasks like regression testing (MREF-3851) and deployment planning (MREF-3850) are still in &#39;New&#39; status.</div>
-                        </div>
-                        
                         <div class="risk-card risk-medium">
                             <div class="risk-title">
-                                🟡 <strong>MREF-4491</strong>
+                                🟡 <strong>MREF-4564</strong>
                                 <span class="risk-badge medium">MEDIUM</span>
-                                <span style="float:right;font-weight:700;color:#555">30.0 pts</span>
+                                <span style="float:right;font-weight:700;color:#555">33.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Deliver flat files to the customers</div>
+                            <div class="risk-detail">High number of unassigned issues (e.g., MREF-4414, MREF-3851) and dependencies on regression testing.</div>
+                        </div>
+                        
+                        <div class="risk-card risk-high">
+                            <div class="risk-title">
+                                🔴 <strong>MREF-4491</strong>
+                                <span class="risk-badge high">HIGH</span>
+                                <span style="float:right;font-weight:700;color:#555">27.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Common functions</div>
-                            <div class="risk-detail">Several issues are unassigned (e.g., MREF-6788, MREF-6610), and dependencies on in-progress tasks like MREF-6067 could cause delays.</div>
+                            <div class="risk-detail">Several critical issues (e.g., MREF-6788, MREF-6347) remain unassigned, and progress is slow on in-progress items.</div>
                         </div>
                         
                         <div class="risk-card risk-low">
@@ -1355,7 +1572,7 @@
                                 <span style="float:right;font-weight:700;color:#555">2.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Observability and analytics</div>
-                            <div class="risk-detail">Minimal remaining work, but MREF-3793 requires clarification to proceed.</div>
+                            <div class="risk-detail">Minimal scope remaining, but MREF-3793 requires clarification.</div>
                         </div>
                         
                         <div class="risk-card risk-low">
@@ -1365,7 +1582,7 @@
                                 <span style="float:right;font-weight:700;color:#555">1.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">FF installer: Install locally downloaded files</div>
-                            <div class="risk-detail">Only one issue (MREF-6779) remains, which is straightforward and low-risk.</div>
+                            <div class="risk-detail">Single issue (MREF-6779) is unassigned but low complexity.</div>
                         </div>
                         
                     </div>
@@ -1391,19 +1608,19 @@
                             <tr>
                                 <td><strong>🟡 Velocity +20%</strong></td>
                                 <td style="color:#555">Team consistently delivers 20% more</td>
-                                <td style="font-weight:700;color:#667eea">June 26, 2026</td>
+                                <td style="font-weight:700;color:#667eea">June 24, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>🟢 Scope Reduction</strong></td>
                                 <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
-                                <td style="font-weight:700;color:#667eea">June 26, 2026</td>
+                                <td style="font-weight:700;color:#667eea">June 24, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>✅ Best Case</strong></td>
                                 <td style="color:#555">Velocity boost AND scope reduction</td>
-                                <td style="font-weight:700;color:#667eea">June 12, 2026</td>
+                                <td style="font-weight:700;color:#667eea">June 10, 2026</td>
                             </tr>
                             
                         </tbody>
@@ -1413,17 +1630,17 @@
                     <p class="ai-section-heading">✅ Recommendations</p>
                     <ul class="rec-list">
                         
-                        <li>Assign unassigned issues in MREF-4564 (e.g., MREF-3851, MREF-3850) to ensure timely progress.</li>
+                        <li>Assign unassigned issues in MREF-4491 (e.g., MREF-6788, MREF-6347) to avoid delays.</li>
                         
-                        <li>Clarify requirements for MREF-3793 in MREF-3613 to avoid delays in observability tasks.</li>
+                        <li>Clarify requirements for MREF-3793 to unblock observability work.</li>
                         
-                        <li>Prioritize grooming and assigning tasks in MREF-4491, such as MREF-6788 and MREF-6610.</li>
+                        <li>Prioritize regression testing tasks (e.g., MREF-3851) to identify potential blockers early.</li>
                         
-                        <li>Monitor progress on in-progress issues like MREF-6067 and MREF-4416 to mitigate risks of delays.</li>
+                        <li>Focus on resolving in-progress issues like MREF-6067 and MREF-4416 to maintain momentum.</li>
                         
-                        <li>Consider deferring low-priority tasks like MREF-4475 to reduce scope and improve delivery confidence.</li>
+                        <li>Defer low-priority tasks such as MREF-6779 to create buffer capacity if needed.</li>
                         
-                        <li>Schedule a mid-sprint review to address blockers and dependencies proactively.</li>
+                        <li>Increase grooming efforts to move more issues into &#39;Ready&#39; status for upcoming sprints.</li>
                         
                     </ul>
                 </div>
@@ -1622,7 +1839,7 @@
             
             <script>
             (window._aiData = window._aiData || [])[2] = {
-                sprintLoad: [{"end_date": "2026-05-27", "issues": ["MGLOBAL-7397", "MGLOBAL-7387", "MGLOBAL-7478", "MGLOBAL-7476"], "points": 35.67, "risk_note": "Several issues remain unassigned, creating potential delays.", "sprint": "Sprint 10", "start_date": "2026-05-13", "work": "Focus on MGLOBAL-4846 and MGLOBAL-4342 epics."}, {"end_date": "2026-06-10", "issues": ["MGLOBAL-7393", "MGLOBAL-7290", "MGLOBAL-7412", "MGLOBAL-7146"], "points": 35.67, "risk_note": "Dependencies on unresolved issues in MGLOBAL-5509.", "sprint": "Sprint 11", "start_date": "2026-05-27", "work": "Continue work on MGLOBAL-4305 and MGLOBAL-5509 epics."}, {"end_date": "2026-06-24", "issues": ["MGLOBAL-7395", "MGLOBAL-4838", "MGLOBAL-4814", "MGLOBAL-4800"], "points": 35.67, "risk_note": "Risk of scope creep due to unresolved performance testing tasks.", "sprint": "Sprint 12", "start_date": "2026-06-10", "work": "Finalize MGLOBAL-4846 and address smaller epics like MGLOBAL-4639."}, {"end_date": "2026-07-08", "issues": ["MGLOBAL-4622", "MGLOBAL-4880", "MGLOBAL-6373", "MGLOBAL-3626"], "points": 35.67, "risk_note": "Uncertainty around final integration testing timelines.", "sprint": "Sprint 13", "start_date": "2026-06-24", "work": "Wrap up remaining work in MGLOBAL-5509 and MGLOBAL-4640."}, {"end_date": "2026-07-22", "issues": ["MGLOBAL-4822", "MGLOBAL-4798", "MGLOBAL-4152", "MGLOBAL-4834"], "points": 35.67, "risk_note": "Potential for unplanned scope additions in final sprint.", "sprint": "Sprint 14", "start_date": "2026-07-08", "work": "Address any spillover work and complete deferred items."}],
+                sprintLoad: [{"end_date": "Mon May 13 2026", "issues": ["MGLOBAL-7397", "MGLOBAL-7387", "MGLOBAL-7393", "MGLOBAL-7391"], "points": 35.67, "risk_note": "Several issues remain unassigned, which could delay progress.", "sprint": "Sprint 10", "start_date": "Mon May 01 2026", "work": "Focus on MGLOBAL-4846 and MGLOBAL-4342 epics."}, {"end_date": "Mon May 29 2026", "issues": ["MGLOBAL-7476", "MGLOBAL-7395", "MGLOBAL-7385", "MGLOBAL-7412"], "points": 35.67, "risk_note": "Dependencies on performance testing and integration may block progress.", "sprint": "Sprint 11", "start_date": "Mon May 15 2026", "work": "Continue work on MGLOBAL-4846 and MGLOBAL-4305 epics."}, {"end_date": "Mon Jun 12 2026", "issues": ["MGLOBAL-7290", "MGLOBAL-7146", "MGLOBAL-6373", "MGLOBAL-4800"], "points": 35.67, "risk_note": "Unresolved technical debt and unassigned issues could cause delays.", "sprint": "Sprint 12", "start_date": "Mon May 31 2026", "work": "Address remaining points in MGLOBAL-5509 and MGLOBAL-4640 epics."}, {"end_date": "Mon Jun 26 2026", "issues": ["MGLOBAL-7090", "MGLOBAL-4814", "MGLOBAL-4822", "MGLOBAL-4796"], "points": 35.67, "risk_note": "Integration testing and QA readiness may require additional effort.", "sprint": "Sprint 13", "start_date": "Mon Jun 14 2026", "work": "Finalize MGLOBAL-4342 and MGLOBAL-4639 epics."}, {"end_date": "Mon Jul 08 2026", "issues": ["MGLOBAL-4838", "MGLOBAL-4834", "MGLOBAL-4622", "MGLOBAL-3626"], "points": 35.67, "risk_note": "Final sprint may face risks from unresolved blockers and scope creep.", "sprint": "Sprint 14", "start_date": "Mon Jun 28 2026", "work": "Complete remaining points in MGLOBAL-4846 and MGLOBAL-5509 epics."}],
                 total: 146.0
             };
             </script>
@@ -1631,12 +1848,12 @@
                     <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
 
                     <!-- Overview + Velocity Trend -->
-                    <div class="ai-overview">The project is behind schedule by 28 days with a calculated completion date of 2026-07-08, exceeding the planned target date of 2026-06-10. Velocity shows signs of improvement but remains inconsistent, requiring focused risk mitigation and prioritization to meet goals.</div>
+                    <div class="ai-overview">The MGLOBAL - Phase II Petmeds project is currently behind schedule by 28 days, with a calculated completion date of 2026-07-08, missing the planned target date of 2026-06-10. The team&#39;s velocity has shown slight improvement but remains insufficient to meet the original timeline without intervention.</div>
                     
                     <div class="trend-badge trend-improving">
                         📈 Velocity IMPROVING
                         
-                         — Velocity has increased from 13.0 to 39.0 to 55.0 points over the last three sprints.
+                         — Velocity has increased from 13.0 to 55.0 points over the last three sprints, but remains below the planned commitment.
                     </div>
                     
 
@@ -1666,7 +1883,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 10</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-05-13 – 2026-05-27</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 01 2026 – Mon May 13 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1677,10 +1894,10 @@
                                     110.3 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MGLOBAL-7397</span> <span class="issue-chip">MGLOBAL-7387</span> <span class="issue-chip">MGLOBAL-7478</span> <span class="issue-chip">MGLOBAL-7476</span> 
+                                    <span class="issue-chip">MGLOBAL-7397</span> <span class="issue-chip">MGLOBAL-7387</span> <span class="issue-chip">MGLOBAL-7393</span> <span class="issue-chip">MGLOBAL-7391</span> 
                                 </td>
                                 <td style="color:#444;font-size:0.93em">Focus on MGLOBAL-4846 and MGLOBAL-4342 epics.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Several issues remain unassigned, creating potential delays.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Several issues remain unassigned, which could delay progress.</td>
                             </tr>
                             
                             
@@ -1691,7 +1908,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 11</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-05-27 – 2026-06-10</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 15 2026 – Mon May 29 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1702,10 +1919,10 @@
                                     74.7 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MGLOBAL-7393</span> <span class="issue-chip">MGLOBAL-7290</span> <span class="issue-chip">MGLOBAL-7412</span> <span class="issue-chip">MGLOBAL-7146</span> 
+                                    <span class="issue-chip">MGLOBAL-7476</span> <span class="issue-chip">MGLOBAL-7395</span> <span class="issue-chip">MGLOBAL-7385</span> <span class="issue-chip">MGLOBAL-7412</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Continue work on MGLOBAL-4305 and MGLOBAL-5509 epics.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Dependencies on unresolved issues in MGLOBAL-5509.</td>
+                                <td style="color:#444;font-size:0.93em">Continue work on MGLOBAL-4846 and MGLOBAL-4305 epics.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Dependencies on performance testing and integration may block progress.</td>
                             </tr>
                             
                             
@@ -1716,7 +1933,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 12</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-06-10 – 2026-06-24</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon May 31 2026 – Mon Jun 12 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1727,10 +1944,10 @@
                                     39.0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MGLOBAL-7395</span> <span class="issue-chip">MGLOBAL-4838</span> <span class="issue-chip">MGLOBAL-4814</span> <span class="issue-chip">MGLOBAL-4800</span> 
+                                    <span class="issue-chip">MGLOBAL-7290</span> <span class="issue-chip">MGLOBAL-7146</span> <span class="issue-chip">MGLOBAL-6373</span> <span class="issue-chip">MGLOBAL-4800</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Finalize MGLOBAL-4846 and address smaller epics like MGLOBAL-4639.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Risk of scope creep due to unresolved performance testing tasks.</td>
+                                <td style="color:#444;font-size:0.93em">Address remaining points in MGLOBAL-5509 and MGLOBAL-4640 epics.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Unresolved technical debt and unassigned issues could cause delays.</td>
                             </tr>
                             
                             
@@ -1741,7 +1958,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 13</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-06-24 – 2026-07-08</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jun 14 2026 – Mon Jun 26 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1752,10 +1969,10 @@
                                     3.3 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MGLOBAL-4622</span> <span class="issue-chip">MGLOBAL-4880</span> <span class="issue-chip">MGLOBAL-6373</span> <span class="issue-chip">MGLOBAL-3626</span> 
+                                    <span class="issue-chip">MGLOBAL-7090</span> <span class="issue-chip">MGLOBAL-4814</span> <span class="issue-chip">MGLOBAL-4822</span> <span class="issue-chip">MGLOBAL-4796</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Wrap up remaining work in MGLOBAL-5509 and MGLOBAL-4640.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Uncertainty around final integration testing timelines.</td>
+                                <td style="color:#444;font-size:0.93em">Finalize MGLOBAL-4342 and MGLOBAL-4639 epics.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Integration testing and QA readiness may require additional effort.</td>
                             </tr>
                             
                             
@@ -1766,7 +1983,7 @@
                                 <td>
                                     <span class="sprint-num-ai">Sprint 14</span>
                                     
-                                    <div style="font-size:0.76em;color:#999;margin-top:2px">2026-07-08 – 2026-07-22</div>
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jun 28 2026 – Mon Jul 08 2026</div>
                                     
                                 </td>
                                 <td style="text-align:center">
@@ -1777,10 +1994,10 @@
                                     0 pts
                                 </td>
                                 <td>
-                                    <span class="issue-chip">MGLOBAL-4822</span> <span class="issue-chip">MGLOBAL-4798</span> <span class="issue-chip">MGLOBAL-4152</span> <span class="issue-chip">MGLOBAL-4834</span> 
+                                    <span class="issue-chip">MGLOBAL-4838</span> <span class="issue-chip">MGLOBAL-4834</span> <span class="issue-chip">MGLOBAL-4622</span> <span class="issue-chip">MGLOBAL-3626</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Address any spillover work and complete deferred items.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Potential for unplanned scope additions in final sprint.</td>
+                                <td style="color:#444;font-size:0.93em">Complete remaining points in MGLOBAL-4846 and MGLOBAL-5509 epics.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Final sprint may face risks from unresolved blockers and scope creep.</td>
                             </tr>
                             
                         </tbody>
@@ -1804,7 +2021,7 @@
                                 <span style="float:right;font-weight:700;color:#555">56.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Phase 2 Deploy to Prod</div>
-                            <div class="risk-detail">Many issues remain unassigned and in &#39;New&#39; status, with critical dependencies on performance testing.</div>
+                            <div class="risk-detail">Many issues remain unassigned or in &#39;New&#39; status, and critical dependencies on performance testing are unresolved.</div>
                         </div>
                         
                         <div class="risk-card risk-medium">
@@ -1814,7 +2031,7 @@
                                 <span style="float:right;font-weight:700;color:#555">36.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Allergens</div>
-                            <div class="risk-detail">Several issues are in progress, but unassigned tasks and integration testing remain risks.</div>
+                            <div class="risk-detail">Several issues are in &#39;In Progress&#39; or &#39;Ready for QA&#39; status, but unassigned work and integration dependencies pose risks.</div>
                         </div>
                         
                         <div class="risk-card risk-medium">
@@ -1824,7 +2041,7 @@
                                 <span style="float:right;font-weight:700;color:#555">24.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Contraindications</div>
-                            <div class="risk-detail">Some tasks are unassigned, and integration testing has not been fully scoped.</div>
+                            <div class="risk-detail">Unassigned issues and incomplete test cases could delay completion.</div>
                         </div>
                         
                         <div class="risk-card risk-high">
@@ -1834,7 +2051,7 @@
                                 <span style="float:right;font-weight:700;color:#555">24.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Deferred to Phase 2</div>
-                            <div class="risk-detail">Critical tasks remain in &#39;New&#39; status, with no clear ownership or progress.</div>
+                            <div class="risk-detail">Significant technical debt and unresolved blockers in &#39;New&#39; status.</div>
                         </div>
                         
                         <div class="risk-card risk-low">
@@ -1844,7 +2061,7 @@
                                 <span style="float:right;font-weight:700;color:#555">3.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds Look up: Conditions</div>
-                            <div class="risk-detail">Small scope with minimal risks, but dependent on cache implementation.</div>
+                            <div class="risk-detail">Small scope with minimal risk, but dependent on caching implementation.</div>
                         </div>
                         
                         <div class="risk-card risk-low">
@@ -1854,7 +2071,7 @@
                                 <span style="float:right;font-weight:700;color:#555">3.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds Look up: Common allergens</div>
-                            <div class="risk-detail">Minimal scope and straightforward implementation.</div>
+                            <div class="risk-detail">Minimal scope and complexity, with no major blockers identified.</div>
                         </div>
                         
                     </div>
@@ -1874,25 +2091,25 @@
                             <tr>
                                 <td><strong>🔴 Status Quo</strong></td>
                                 <td style="color:#555">No changes, velocity stays flat</td>
-                                <td style="font-weight:700;color:#667eea">2026-07-08</td>
+                                <td style="font-weight:700;color:#667eea">July 08, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>🟡 Velocity +20%</strong></td>
                                 <td style="color:#555">Team consistently delivers 20% more</td>
-                                <td style="font-weight:700;color:#667eea">2026-06-24</td>
+                                <td style="font-weight:700;color:#667eea">June 26, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>🟢 Scope Reduction</strong></td>
                                 <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
-                                <td style="font-weight:700;color:#667eea">2026-06-24</td>
+                                <td style="font-weight:700;color:#667eea">June 26, 2026</td>
                             </tr>
                             
                             <tr>
                                 <td><strong>✅ Best Case</strong></td>
                                 <td style="color:#555">Velocity boost AND scope reduction</td>
-                                <td style="font-weight:700;color:#667eea">2026-06-10</td>
+                                <td style="font-weight:700;color:#667eea">June 12, 2026</td>
                             </tr>
                             
                         </tbody>
@@ -1902,17 +2119,17 @@
                     <p class="ai-section-heading">✅ Recommendations</p>
                     <ul class="rec-list">
                         
-                        <li>Assign unowned issues in MGLOBAL-4846 (e.g., MGLOBAL-7395, MGLOBAL-4834) to specific team members.</li>
+                        <li>Assign unassigned issues in MGLOBAL-4846 (e.g., MGLOBAL-7395, MGLOBAL-4834) to ensure progress.</li>
                         
-                        <li>Prioritize performance testing tasks in MGLOBAL-4846 (e.g., MGLOBAL-7478, MGLOBAL-4838) to avoid delays.</li>
+                        <li>Prioritize performance testing tasks (e.g., MGLOBAL-4838, MGLOBAL-4834) to mitigate deployment risks.</li>
                         
-                        <li>Focus on resolving &#39;New&#39; issues in MGLOBAL-5509 (e.g., MGLOBAL-7290, MGLOBAL-7023) to mitigate risks.</li>
+                        <li>Defer low-priority items in MGLOBAL-5509 (e.g., MGLOBAL-4880, MGLOBAL-4152) to reduce scope.</li>
                         
-                        <li>Defer low-priority items in MGLOBAL-4639 and MGLOBAL-4640 to reduce scope (e.g., MGLOBAL-4814, MGLOBAL-4800).</li>
+                        <li>Focus on completing &#39;In Progress&#39; issues in MGLOBAL-4342 (e.g., MGLOBAL-7387, MGLOBAL-7402) to stabilize velocity.</li>
                         
-                        <li>Increase velocity by ensuring all team members are fully utilized and blockers are escalated promptly.</li>
+                        <li>Ensure caching implementation for MGLOBAL-4640 and MGLOBAL-4639 (e.g., MGLOBAL-4800, MGLOBAL-4814) is completed early.</li>
                         
-                        <li>Conduct a mid-sprint review to identify and address risks in high-priority epics like MGLOBAL-4846 and MGLOBAL-4342.</li>
+                        <li>Conduct a risk review for unresolved blockers in MGLOBAL-4305 (e.g., MGLOBAL-7393, MGLOBAL-7412) to avoid delays.</li>
                         
                     </ul>
                 </div>
@@ -1930,6 +2147,58 @@
         </div>
     </div>
 
+    <!-- ── AI Chat Sidebar ─────────────────────────────────────────────── -->
+    <button class="chat-fab" id="chatFab" onclick="toggleChatSidebar()" title="Ask AI about this project">
+        💬
+    </button>
+
+    <div class="chat-sidebar" id="chatSidebar">
+        <div class="chat-header">
+            <span style="font-size:1.2em">🤖</span>
+            <h3>AI Project Assistant</h3>
+            <span class="chat-project-tag" id="chatProjectTag">All Projects</span>
+            <div class="chat-header-btns">
+                <button class="chat-icon-btn" onclick="clearChat()" title="Clear conversation">🗑</button>
+                <button class="chat-icon-btn" onclick="toggleChatSidebar()" title="Close">✕</button>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-bubble assistant">
+                👋 Hi! I'm your AI assistant with full access to your live Jira project data.<br><br>
+                Ask me anything about <strong>velocity trends</strong>, <strong>epic risks</strong>, <strong>forecast dates</strong>, <strong>blockers</strong>, <strong>what-if scenarios</strong>, or <strong>recommendations</strong>!
+            </div>
+        </div>
+
+        <div class="chat-typing" id="chatTyping">
+            <div class="chat-dot"></div>
+            <div class="chat-dot"></div>
+            <div class="chat-dot"></div>
+        </div>
+
+        <div class="chat-suggestions" id="chatSuggestions">
+            <button class="suggestion-chip" onclick="sendSuggestion(this)">Which epic is most at risk?</button>
+            <button class="suggestion-chip" onclick="sendSuggestion(this)">What's our velocity trend?</button>
+            <button class="suggestion-chip" onclick="sendSuggestion(this)">Will we hit the planned date?</button>
+            <button class="suggestion-chip" onclick="sendSuggestion(this)">Top recommendations?</button>
+            <button class="suggestion-chip" onclick="sendSuggestion(this)">What-if scenarios?</button>
+            <button class="suggestion-chip" onclick="sendSuggestion(this)">Show sprint-by-sprint plan</button>
+        </div>
+
+        <div class="chat-server-note" id="chatServerNote"></div>
+
+        <div class="chat-input-row">
+            <textarea class="chat-input" id="chatInput"
+                placeholder="Ask about velocity, risks, epics, deadlines..."
+                rows="1"
+                onkeydown="handleChatKey(event)"
+                oninput="autoResizeChatInput(this)"></textarea>
+            <button class="chat-send-btn" id="chatSendBtn" onclick="sendChatMessage()" title="Send">
+                &#10148;
+            </button>
+        </div>
+    </div>
+
     <script>
         function showProject(idx) {
             document.querySelectorAll('.project-panel').forEach((p, i) => {
@@ -1938,6 +2207,7 @@
             document.querySelectorAll('.tab-btn').forEach((b, i) => {
                 b.classList.toggle('active', i === idx);
             });
+            updateChatProjectContext(idx);
         }
 
         const _burndownCharts = {};
@@ -2015,6 +2285,181 @@
                 setTimeout(() => initBurndownChart(idx), 80);
             }
         }
+
+        // ── AI Chat Sidebar ──────────────────────────────────────────────────
+        let _chatHistory = [];
+        let _chatProjectIndex = 0;
+        let _chatBusy = false;
+
+        function toggleChatSidebar() {
+            const sidebar = document.getElementById('chatSidebar');
+            const fab = document.getElementById('chatFab');
+            const isOpen = sidebar.classList.contains('open');
+            sidebar.classList.toggle('open', !isOpen);
+            fab.title = isOpen ? 'Ask AI about this project' : 'Close AI chat';
+            fab.innerHTML = isOpen ? '💬' : '✕';
+        }
+
+        function updateChatProjectContext(idx) {
+            _chatProjectIndex = idx;
+            const tabs = document.querySelectorAll('.tab-btn');
+            const label = tabs[idx] ? tabs[idx].textContent.trim() : 'All Projects';
+            const tag = document.getElementById('chatProjectTag');
+            if (tag) tag.textContent = label;
+        }
+
+        function clearChat() {
+            _chatHistory = [];
+            const msgs = document.getElementById('chatMessages');
+            msgs.innerHTML = '<div class="chat-bubble assistant">Chat cleared! Ask me anything about your Jira project data.</div>';
+            const sugg = document.getElementById('chatSuggestions');
+            if (sugg) sugg.style.display = 'flex';
+        }
+
+        function renderMarkdown(text) {
+            // Escape HTML
+            let s = text
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            // Bold
+            s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            // Italic
+            s = s.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            // Inline code
+            s = s.replace(/`([^`\n]+)`/g, '<code>$1</code>');
+            // Headers
+            s = s.replace(/^### (.+)$/gm, '<strong style="display:block;margin-top:10px;color:#667eea">$1</strong>');
+            s = s.replace(/^## (.+)$/gm, '<strong style="display:block;margin-top:10px;font-size:1.05em;color:#667eea">$1</strong>');
+            // Unordered list items: collect runs and wrap in <ul>
+            s = s.replace(/((?:^[-•] .+\n?)+)/gm, (block) => {
+                const items = block.trim().split('\n').map(l =>
+                    '<li>' + l.replace(/^[-•] /, '') + '</li>'
+                ).join('');
+                return '<ul>' + items + '</ul>';
+            });
+            // Numbered list
+            s = s.replace(/((?:^\d+\. .+\n?)+)/gm, (block) => {
+                const items = block.trim().split('\n').map(l =>
+                    '<li>' + l.replace(/^\d+\. /, '') + '</li>'
+                ).join('');
+                return '<ol>' + items + '</ol>';
+            });
+            // Paragraphs
+            s = s.replace(/\n{2,}/g, '</p><p>');
+            s = s.replace(/\n/g, '<br>');
+            return '<p>' + s + '</p>';
+        }
+
+        function appendMessage(role, htmlContent) {
+            const msgs = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = 'chat-bubble ' + role;
+            if (role === 'user') {
+                div.textContent = htmlContent; // plain text for user messages
+            } else {
+                div.innerHTML = renderMarkdown(htmlContent);
+            }
+            msgs.appendChild(div);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function appendError(msg) {
+            const msgs = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = 'chat-bubble error';
+            div.textContent = '⚠ ' + msg;
+            msgs.appendChild(div);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function setTyping(visible) {
+            const t = document.getElementById('chatTyping');
+            t.classList.toggle('visible', visible);
+            if (visible) document.getElementById('chatMessages').scrollTop = 99999;
+        }
+
+        function setChatBusy(busy) {
+            _chatBusy = busy;
+            document.getElementById('chatSendBtn').disabled = busy;
+            document.getElementById('chatInput').disabled = busy;
+            setTyping(busy);
+        }
+
+        function autoResizeChatInput(el) {
+            el.style.height = 'auto';
+            el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+        }
+
+        async function sendChatMessage() {
+            if (_chatBusy) return;
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            input.value = '';
+            input.style.height = 'auto';
+
+            appendMessage('user', text);
+            _chatHistory.push({ role: 'user', content: text });
+            setChatBusy(true);
+
+            // Hide suggestion chips after first send
+            const sugg = document.getElementById('chatSuggestions');
+            if (sugg) sugg.style.display = 'none';
+
+            try {
+                const resp = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: text,
+                        history: _chatHistory.slice(-10),
+                        project_index: _chatProjectIndex
+                    })
+                });
+
+                let data;
+                try { data = await resp.json(); } catch(_) { data = {}; }
+
+                if (!resp.ok) {
+                    throw new Error(data.error || 'Server error ' + resp.status);
+                }
+
+                const reply = data.reply || '(no response)';
+                appendMessage('assistant', reply);
+                _chatHistory.push({ role: 'assistant', content: reply });
+
+            } catch (err) {
+                const isNetErr = err.message.includes('Failed to fetch') ||
+                                 err.message.includes('NetworkError') ||
+                                 err.message.includes('Load failed');
+                if (isNetErr) {
+                    appendError('Cannot reach the Flask server. Run "python run_web_app.py" locally then open http://localhost:5000 to use the chat.');
+                    const note = document.getElementById('chatServerNote');
+                    if (note) note.textContent = '⚠ Server not running — chat requires the local Flask server.';
+                } else {
+                    appendError(err.message);
+                }
+            } finally {
+                setChatBusy(false);
+            }
+        }
+
+        function sendSuggestion(btn) {
+            const input = document.getElementById('chatInput');
+            input.value = btn.textContent.trim();
+            sendChatMessage();
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatMessage();
+            }
+            setTimeout(() => autoResizeChatInput(e.target), 0);
+        }
+
+        // Initialise chat context to the first visible project tab
+        updateChatProjectContext(0);
     </script>
 </body>
 </html>
