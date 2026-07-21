@@ -752,7 +752,7 @@
         <!-- Header -->
         <div class="header">
             <h1>📊 JIRA EPIC FORECAST REPORT</h1>
-            <p class="subtitle">Generated on 2026-07-21 13:25:35</p>
+            <p class="subtitle">Generated on 2026-07-21 13:40:57</p>
         </div>
 
         <!-- Project Tabs -->
@@ -762,6 +762,18 @@
                     onclick="showProject(0)"
                     id="tab-0">
                 MGLOBAL - Phase II Petmeds
+            </button>
+            
+            <button class="tab-btn "
+                    onclick="showProject(1)"
+                    id="tab-1">
+                Karan
+            </button>
+            
+            <button class="tab-btn "
+                    onclick="showProject(2)"
+                    id="tab-2">
+                Arjun
             </button>
             
         </div>
@@ -953,7 +965,7 @@
             
             <script>
             (window._aiData = window._aiData || [])[0] = {
-                sprintLoad: [{"end_date": "Mon Jul 22 2026", "issues": ["MGLOBAL-8289", "MGLOBAL-7889", "MGLOBAL-7887", "MGLOBAL-5512"], "points": 13.0, "risk_note": "No major risks identified; all issues are in \u0027Ready to Deploy\u0027 or \u0027Ready for QA\u0027 status.", "sprint": "Sprint 15", "start_date": "Mon Jul 10 2026", "work": "Final deployment and QA for PetMeds Phase II."}],
+                sprintLoad: [{"end_date": "Mon Jul 22 2026", "issues": ["MGLOBAL-8289", "MGLOBAL-7889", "MGLOBAL-7887", "MGLOBAL-5512"], "points": 13.0, "risk_note": "All issues are in \u0027Ready to Deploy\u0027 or \u0027Ready for QA\u0027 status, but delays in QA or deployment could impact the timeline.", "sprint": "Sprint 15", "start_date": "Mon Jul 10 2026", "work": "Complete remaining tasks for PetMeds: Phase 2 Deploy to Prod"}],
                 total: 13.0
             };
             </script>
@@ -962,11 +974,11 @@
                     <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
 
                     <!-- Overview + Velocity Trend -->
-                    <div class="ai-overview">The project is slightly behind schedule with a buffer of -14 days but is forecasted to complete within the next sprint. The delivery outlook is stable, with no major risks identified for the remaining scope.</div>
+                    <div class="ai-overview">The project is slightly behind schedule by 14 days but is forecasted to complete within the next sprint. The team has a stable velocity, and all remaining work is concentrated in a single epic with manageable risks.</div>
                     
                     <div class="trend-badge trend-stable">
                         📊 Velocity STABLE
-                         — The team&#39;s velocity has been consistent, averaging 44.67 points over the last three sprints.
+                         — Velocity has been consistent over the last three sprints, averaging 44.67 points per sprint.
                     </div>
                     
 
@@ -1009,8 +1021,8 @@
                                 <td>
                                     <span class="issue-chip">MGLOBAL-8289</span> <span class="issue-chip">MGLOBAL-7889</span> <span class="issue-chip">MGLOBAL-7887</span> <span class="issue-chip">MGLOBAL-5512</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Final deployment and QA for PetMeds Phase II.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">No major risks identified; all issues are in &#39;Ready to Deploy&#39; or &#39;Ready for QA&#39; status.</td>
+                                <td style="color:#444;font-size:0.93em">Complete remaining tasks for PetMeds: Phase 2 Deploy to Prod</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">All issues are in &#39;Ready to Deploy&#39; or &#39;Ready for QA&#39; status, but delays in QA or deployment could impact the timeline.</td>
                             </tr>
                             
                         </tbody>
@@ -1034,7 +1046,7 @@
                                 <span style="float:right;font-weight:700;color:#555">13.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Phase 2 Deploy to Prod</div>
-                            <div class="risk-detail">All issues are either &#39;Ready to Deploy&#39; or &#39;Ready for QA&#39;, and the remaining scope fits within the team&#39;s average velocity for one sprint.</div>
+                            <div class="risk-detail">All issues are well-defined, assigned, and in advanced statuses (&#39;Ready to Deploy&#39; or &#39;Ready for QA&#39;). Minimal risk of scope creep or unplanned work.</div>
                         </div>
                         
                     </div>
@@ -1082,17 +1094,401 @@
                     <p class="ai-section-heading">✅ Recommendations</p>
                     <ul class="rec-list">
                         
-                        <li>Ensure MGLOBAL-8289, MGLOBAL-7889, and MGLOBAL-7887 are deployed promptly as they are already in &#39;Ready to Deploy&#39; status.</li>
+                        <li>Prioritize QA for MGLOBAL-5512 to ensure it transitions to &#39;Ready to Deploy&#39; without delays.</li>
                         
-                        <li>Prioritize QA on MGLOBAL-5512 to ensure it is completed within the sprint timeline.</li>
+                        <li>Coordinate with deployment teams to pre-schedule deployment activities for MGLOBAL-8289, MGLOBAL-7889, and MGLOBAL-7887.</li>
                         
-                        <li>Monitor team capacity closely to maintain stable velocity and avoid unplanned scope creep.</li>
+                        <li>Monitor any blockers or delays in &#39;Ready to Deploy&#39; issues, particularly MGLOBAL-8289 and MGLOBAL-7889.</li>
                         
-                        <li>Conduct a final review of deployment dependencies to mitigate any last-minute blockers.</li>
+                        <li>Conduct a final review of CORS and Host header configurations in MGLOBAL-7887 to avoid last-minute defects.</li>
                         
-                        <li>Communicate the forecasted completion date of July 22, 2026, to stakeholders to align expectations.</li>
+                        <li>Ensure observability enhancements in MGLOBAL-5512 are validated against production-like environments.</li>
+                        
+                        <li>Communicate the updated forecast to stakeholders, emphasizing the low-risk nature of the remaining work.</li>
                         
                     </ul>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="project-panel " id="panel-1">
+
+            <!-- Epic Story Points -->
+            <div class="section">
+                <h2 class="section-title">📋 Epic Story Points</h2>
+                <table class="epic-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th>Epic Key</th>
+                            <th>Summary</th>
+                            <th style="text-align: right; width: 120px;">Story Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="epic-row" data-epic-key="MRCDFP-2">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MRCDFP-2')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MRCDFP-2</span></td>
+                            <td>Core drug files: Handle new NDCs in existing builds. </td>
+                            <td class="points">15.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MRCDFP-2">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MRCDFP_2" data-child-items='[{"key": "MRCDFP-10", "story_points": 2.0, "summary": "Set up and document onboarding for mcp-server-legacy-doc-generator (data source + MBS_KEY access)"}, {"key": "MRCDFP-7", "story_points": 5.0, "summary": "Med-File V2: Support Existing Versions for NDC Expansion"}, {"key": "MRCDFP-6", "story_points": 0.0, "summary": "MDDB v1: Support Existing Versions for NDC Expansion"}, {"key": "MRCDFP-5", "story_points": 5.0, "summary": "MDDB v2: Support Existing Versions for NDC Expansion"}, {"key": "MRCDFP-4", "story_points": 0.0, "summary": "MDDB v2.5: Support Existing Versions for NDC Expansion"}, {"key": "MRCDFP-3", "story_points": 3.0, "summary": "Med-File V1: Support Existing Versions for NDC Expansion"}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td></td>
+                            <td><strong>TOTAL</strong></td>
+                            <td></td>
+                            <td class="points">15.0 pts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sprint Velocity -->
+            <div class="section">
+                <h2 class="section-title">
+                    🚀 Sprint Velocity (Last 3 Completed Sprints)
+                    
+                </h2>
+                
+                <p style="color:#888; padding:20px 0;">⚠ No sprint velocity data available.</p>
+                
+            </div>
+
+            <!-- Forecast Summary -->
+            
+            <div class="section">
+                <p style="color:#888; padding:20px 0;">⚠ Forecast could not be calculated for this project.</p>
+            </div>
+            
+
+            <!-- AI Summary Button -->
+            <div class="ai-btn-wrap">
+                <button class="ai-toggle-btn" onclick="toggleAI(1)">
+                    🤖 View AI Forecast Summary
+                </button>
+            </div>
+
+            <!-- AI Summary Collapsible Panel -->
+            
+            <div class="ai-panel" id="ai-panel-1">
+                <div class="section">
+                    <p style="color:#888;text-align:center;padding:20px 0;">
+                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
+                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
+                    </p>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="project-panel " id="panel-2">
+
+            <!-- Epic Story Points -->
+            <div class="section">
+                <h2 class="section-title">📋 Epic Story Points</h2>
+                <table class="epic-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th>Epic Key</th>
+                            <th>Summary</th>
+                            <th style="text-align: right; width: 120px;">Story Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="epic-row" data-epic-key="MREG-70">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MREG-70')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MREG-70</span></td>
+                            <td>NDC expansion (Supplemental files): Release new version without formatting changes</td>
+                            <td class="points">354.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MREG-70">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MREG_70" data-child-items='[{"key": "MREG-365", "story_points": 0.0, "summary": "Support 12-digit NDCs in Medicare plans file v2"}, {"key": "MREG-327", "story_points": 0.0, "summary": "NDC Expansion - Substitution Groups Version 2: Full 12-Digit NDC Support"}, {"key": "MREG-38", "story_points": 21.0, "summary": "Make changes to SQLs: Part 1"}, {"key": "MREG-36", "story_points": 13.0, "summary": "Product setup for new versions: Part 2"}, {"key": "MREG-34", "story_points": 8.0, "summary": "Evaluation files setup: Part 1"}, {"key": "MREG-33", "story_points": 13.0, "summary": "Build customer manuals: Part 1"}, {"key": "MREG-32", "story_points": 34.0, "summary": "KSH and DAVID validation changes: Part 2"}, {"key": "MREG-29", "story_points": 8.0, "summary": "Evaluation files setup: Part 4"}, {"key": "MREG-28", "story_points": 13.0, "summary": "Setup AutoSys in staging/prod environment"}, {"key": "MREG-27", "story_points": 8.0, "summary": "Evaluation files setup: Part 2"}, {"key": "MREG-26", "story_points": 21.0, "summary": "Make changes to SQLs: Part 2"}, {"key": "MREG-25", "story_points": 21.0, "summary": "Make changes to SQLs: Part 3"}, {"key": "MREG-24", "story_points": 13.0, "summary": "Product setup for new versions: Part 4"}, {"key": "MREG-22", "story_points": 8.0, "summary": "Evaluation files setup: Part 5"}, {"key": "MREG-21", "story_points": 34.0, "summary": "KSH and DAVID validation changes: Part 1"}, {"key": "MREG-19", "story_points": 34.0, "summary": "KSH and DAVID validation changes: Part 3"}, {"key": "MREG-18", "story_points": 8.0, "summary": "Build customer manuals: Part 2"}, {"key": "MREG-17", "story_points": 8.0, "summary": "Flat file installer changes"}, {"key": "MREG-16", "story_points": 34.0, "summary": "KSH and DAVID validation changes: Part 4"}, {"key": "MREG-15", "story_points": 8.0, "summary": "Build customer manuals: Part 3"}, {"key": "MREG-14", "story_points": 13.0, "summary": "Make changes to SQLs: Part 4"}, {"key": "MREG-13", "story_points": 13.0, "summary": "Product setup for new versions: Part 3"}, {"key": "MREG-12", "story_points": 13.0, "summary": "Product setup for new versions: Part 1"}, {"key": "MREG-11", "story_points": 8.0, "summary": "Evaluation files setup: Part 3"}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="epic-row" data-epic-key="MREG-111">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MREG-111')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MREG-111</span></td>
+                            <td>NDC expansion (Supplemental files): Build new versions along with NDC &amp; labeler code formatting changes</td>
+                            <td class="points">120.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MREG-111">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MREG_111" data-child-items='[{"key": "MREG-92", "story_points": 5.0, "summary": "Evaluation files for NDC and labeler code changes"}, {"key": "MREG-90", "story_points": 8.0, "summary": "Flat file installer changes"}, {"key": "MREG-88", "story_points": 8.0, "summary": "Setup AutoSys jobs for new versions in Staging/Prod - 5 Products"}, {"key": "MREG-85", "story_points": 13.0, "summary": "Product setup on dev stage and prod"}, {"key": "MREG-82", "story_points": 13.0, "summary": "Raise DCR for increased NDC and labeler code length"}, {"key": "MREG-81", "story_points": 5.0, "summary": "Customer manual for NDC and labeler code changes"}, {"key": "MREG-78", "story_points": 34.0, "summary": "KSH and DAVID validation changes"}, {"key": "MREG-77", "story_points": 21.0, "summary": "Make SQL changes "}, {"key": "MREG-76", "story_points": 13.0, "summary": "Migration guides to move from existing to new version"}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="epic-row" data-epic-key="MREG-9">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MREG-9')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MREG-9</span></td>
+                            <td>NDC expansion (Supplemental files): Keep the existing build intact</td>
+                            <td class="points">107.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MREG-9">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MREG_9" data-child-items='[{"key": "MREG-323", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Drug Imprint Database Version 2: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-322", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Drug Imprint Database Version 1: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-321", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Immunization Cross-Reference File: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-320", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Controlled Substances File: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-319", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Integrated MedFacts Module: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-318", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Patient Safety Programs File: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-317", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Substitution Groups Files: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-316", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - AHFS Supplemental File: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-314", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Drug Inactive Date File: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-313", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Drug Application File: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-310", "story_points": 0.0, "summary": "[NDC Expansion] Support Existing Versions - Medicare Plans Files: Truncate Prepended 0 \u0026 Filter New NDCs"}, {"key": "MREG-39", "story_points": 13.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 5"}, {"key": "MREG-37", "story_points": 21.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 7"}, {"key": "MREG-35", "story_points": 13.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 3"}, {"key": "MREG-31", "story_points": 13.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 4"}, {"key": "MREG-30", "story_points": 13.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 2"}, {"key": "MREG-23", "story_points": 13.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 1"}, {"key": "MREG-20", "story_points": 13.0, "summary": "Make changes in the existing builds to keep accepting 11-digit NDCs: Part 6"}, {"key": "MREG-10", "story_points": 8.0, "summary": "Release activities: CECR, Go/No-Go, Pre-deployment plan, prod deployment: Epic MREF-6071 "}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="epic-row" data-epic-key="MREG-145">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MREG-145')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MREG-145</span></td>
+                            <td>Core drug files: Create new versions to accept 12 digit NDCs</td>
+                            <td class="points">58.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MREG-145">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MREG_145" data-child-items='[{"key": "MREG-128", "story_points": 3.0, "summary": "Customer manual for MDDB v4"}, {"key": "MREG-126", "story_points": 3.0, "summary": "Product set up on dev for MDDB v4"}, {"key": "MREG-125", "story_points": 5.0, "summary": "Product set up on stage for Med-File v4"}, {"key": "MREG-124", "story_points": 5.0, "summary": "Product set up on prod for Med-File v4"}, {"key": "MREG-122", "story_points": 8.0, "summary": "Make SQL changes in Med-File "}, {"key": "MREG-121", "story_points": 3.0, "summary": "Customer manual for MDDB v4"}, {"key": "MREG-119", "story_points": 5.0, "summary": "Make KSH changes for Med-File v4"}, {"key": "MREG-118", "story_points": 5.0, "summary": "Product set up on stage for MDDB v4"}, {"key": "MREG-117", "story_points": 3.0, "summary": "Product set up on dev for Med-File v4"}, {"key": "MREG-116", "story_points": 8.0, "summary": "Make SQL changes for MDDB v4"}, {"key": "MREG-114", "story_points": 5.0, "summary": "Product setup on prod for MDDB v4"}, {"key": "MREG-113", "story_points": 5.0, "summary": "Make KSH changes for MDDB v4"}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="epic-row" data-epic-key="MREG-112">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MREG-112')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MREG-112</span></td>
+                            <td>NDC expansion (Supplemental files): Build new versions along with NDC &amp; dollar field formatting changes</td>
+                            <td class="points">57.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MREG-112">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MREG_112" data-child-items='[{"key": "MREG-91", "story_points": 13.0, "summary": "KSH and DAVID validation changes"}, {"key": "MREG-89", "story_points": 8.0, "summary": "DCR for NDC, labeler code and dollar field expansion "}, {"key": "MREG-87", "story_points": 5.0, "summary": "Setup AutoSys jobs for new versions in Staging/Prod - 2 Products"}, {"key": "MREG-86", "story_points": 5.0, "summary": "Product setup on dev stage and prod"}, {"key": "MREG-84", "story_points": 8.0, "summary": "Release activities: CECR, Go/No-Go, Pre-deployment plan, prod deployment - NDC Expansion for Supplimental Files"}, {"key": "MREG-83", "story_points": 5.0, "summary": "Migration guide from existing version to new versions"}, {"key": "MREG-80", "story_points": 3.0, "summary": "Creation of evaluation product"}, {"key": "MREG-79", "story_points": 5.0, "summary": "Flat file installer changes"}, {"key": "MREG-75", "story_points": 5.0, "summary": "SQL changes for NDC, labeler code and dollar field "}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="epic-row" data-epic-key="MRCDFP-2">
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button class="expand-btn" title="Show child items" onclick="toggleEpicChildren(this, 'MRCDFP-2')">
+                                    ▼
+                                </button>
+                            </td>
+                            <td><span class="epic-key">MRCDFP-2</span></td>
+                            <td>Core drug files: Handle new NDCs in existing builds. </td>
+                            <td class="points">24.0 pts</td>
+                        </tr>
+                        <tr class="child-items-row" data-epic-key="MRCDFP-2">
+                            <td colspan="4" class="child-items-cell">
+                                <div style="padding: 15px 20px;">
+                                    <table class="child-items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Child Key</th>
+                                                <th>Summary</th>
+                                                <th style="text-align: right; width: 120px;">Story Points</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="children-MRCDFP_2" data-child-items='[{"key": "MREG-127", "story_points": 0.0, "summary": "[Med-File V2] Remove deprecated materialized view cursors from MF2 SQL scripts"}, {"key": "MREG-123", "story_points": 8.0, "summary": "Handle 12-digit NDCs in Med-File "}, {"key": "MREG-120", "story_points": 8.0, "summary": "Handle 12-digit NDCs in MDDB"}, {"key": "MREG-115", "story_points": 8.0, "summary": "Handle 12-digit NDCs in SDDB"}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td></td>
+                            <td><strong>TOTAL</strong></td>
+                            <td></td>
+                            <td class="points">720.0 pts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sprint Velocity -->
+            <div class="section">
+                <h2 class="section-title">
+                    🚀 Sprint Velocity (Last 3 Completed Sprints)
+                    
+                </h2>
+                
+                <table class="sprint-table">
+                    <thead>
+                        <tr>
+                            <th>Sprint Name</th>
+                            <th style="text-align: right;">Committed</th>
+                            <th style="text-align: right;">Completed</th>
+                            <th style="text-align: center;">Completion Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2025 Sprint 26 - MS CST</span></td>
+                            <td class="points">0 pts</td>
+                            <td class="points">0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    0%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2024 Sprint 22 - MGLOBAL</span></td>
+                            <td class="points">2.0 pts</td>
+                            <td class="points">0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    0.0%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="sprint-name">2025 Sprint 7 - MS CST</span></td>
+                            <td class="points">0 pts</td>
+                            <td class="points">0 pts</td>
+                            <td style="text-align: center;">
+                                <span class="completion-rate rate-low">
+                                    0%
+                                </span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="average-velocity">
+                    Average Velocity
+                    <span class="value">0.0 pts/sprint</span>
+                </div>
+                
+            </div>
+
+            <!-- Forecast Summary -->
+            
+            <div class="section">
+                <p style="color:#888; padding:20px 0;">⚠ Forecast could not be calculated for this project.</p>
+            </div>
+            
+
+            <!-- AI Summary Button -->
+            <div class="ai-btn-wrap">
+                <button class="ai-toggle-btn" onclick="toggleAI(2)">
+                    🤖 View AI Forecast Summary
+                </button>
+            </div>
+
+            <!-- AI Summary Collapsible Panel -->
+            
+            <div class="ai-panel" id="ai-panel-2">
+                <div class="section">
+                    <p style="color:#888;text-align:center;padding:20px 0;">
+                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
+                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
+                    </p>
                 </div>
             </div>
             
