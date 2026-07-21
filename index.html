@@ -752,7 +752,7 @@
         <!-- Header -->
         <div class="header">
             <h1>📊 JIRA EPIC FORECAST REPORT</h1>
-            <p class="subtitle">Generated on 2026-07-21 12:47:06</p>
+            <p class="subtitle">Generated on 2026-07-21 13:15:04</p>
         </div>
 
         <!-- Project Tabs -->
@@ -805,8 +805,8 @@
                                                 <th style="text-align: right; width: 120px;">Story Points</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="children-MGLOBAL_4846">
-                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;"><span class="loading-spinner"></span> Loading child items...</td></tr>
+                                        <tbody id="children-MGLOBAL_4846" data-child-items='[{"key": "MGLOBAL-8289", "story_points": 3.0, "summary": "BlackDuck - CE_MEDI_MEDI0_BD0_PETS_MEDS-WEB-SERVICES - Apache Commons Lang \u0026 Spring Boot"}, {"key": "MGLOBAL-7889", "story_points": 3.0, "summary": "Verbose error messages expose backend server details including Apache Tomcat version."}, {"key": "MGLOBAL-7887", "story_points": 2.0, "summary": "Harden HTTP request header trust boundary \u2014 CORS whitelist and Host header validation"}, {"key": "MGLOBAL-5512", "story_points": 5.0, "summary": "Observability Enhancements for Petmed"}]'>
+                                            <tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;">Expand to view child items</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -953,7 +953,7 @@
             
             <script>
             (window._aiData = window._aiData || [])[0] = {
-                sprintLoad: [{"end_date": "Mon Jul 22 2026", "issues": ["MGLOBAL-8289", "MGLOBAL-7889", "MGLOBAL-7887", "MGLOBAL-5512"], "points": 13.0, "risk_note": "Risk of delays if \u0027Ready for QA\u0027 issue MGLOBAL-5512 encounters blockers during testing.", "sprint": "Sprint 15", "start_date": "Mon Jul 10 2026", "work": "Finalizing deployment and addressing observability enhancements."}],
+                sprintLoad: [{"end_date": "Mon Jul 22 2026", "issues": ["MGLOBAL-8289", "MGLOBAL-7889", "MGLOBAL-7887", "MGLOBAL-5512"], "points": 13.0, "risk_note": "Risk of delays if QA uncovers critical issues or if Ready to Deploy items face unexpected blockers.", "sprint": "Sprint 15", "start_date": "Mon Jul 10 2026", "work": "Final deployment and QA for PetMeds Phase II"}],
                 total: 13.0
             };
             </script>
@@ -962,11 +962,11 @@
                     <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
 
                     <!-- Overview + Velocity Trend -->
-                    <div class="ai-overview">The project is slightly behind schedule by 14 days but is forecasted to complete within the next sprint. The team has a stable velocity, and the remaining work is manageable within the current sprint timeframe.</div>
+                    <div class="ai-overview">The MGLOBAL - Phase II Petmeds project is slightly behind schedule by 14 buffer days but is forecasted to complete within the next sprint. The team’s velocity has been stable but slightly underperforming against commitments, which poses a minor risk to timely delivery.</div>
                     
                     <div class="trend-badge trend-stable">
                         📊 Velocity STABLE
-                         — Velocity has been consistent over the last three sprints, averaging 44.67 points.
+                         — Velocity has been consistent over the last three sprints, averaging 44.67 points per sprint.
                     </div>
                     
 
@@ -1009,8 +1009,8 @@
                                 <td>
                                     <span class="issue-chip">MGLOBAL-8289</span> <span class="issue-chip">MGLOBAL-7889</span> <span class="issue-chip">MGLOBAL-7887</span> <span class="issue-chip">MGLOBAL-5512</span> 
                                 </td>
-                                <td style="color:#444;font-size:0.93em">Finalizing deployment and addressing observability enhancements.</td>
-                                <td style="font-size:0.87em;color:#666;font-style:italic">Risk of delays if &#39;Ready for QA&#39; issue MGLOBAL-5512 encounters blockers during testing.</td>
+                                <td style="color:#444;font-size:0.93em">Final deployment and QA for PetMeds Phase II</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Risk of delays if QA uncovers critical issues or if Ready to Deploy items face unexpected blockers.</td>
                             </tr>
                             
                         </tbody>
@@ -1027,14 +1027,14 @@
                     <p class="ai-section-heading">⚠️ Epic Risk Assessment</p>
                     <div class="risk-grid">
                         
-                        <div class="risk-card risk-low">
+                        <div class="risk-card risk-medium">
                             <div class="risk-title">
-                                🟢 <strong>MGLOBAL-4846</strong>
-                                <span class="risk-badge low">LOW</span>
+                                🟡 <strong>MGLOBAL-4846</strong>
+                                <span class="risk-badge medium">MEDIUM</span>
                                 <span style="float:right;font-weight:700;color:#555">13.0 pts</span>
                             </div>
                             <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Phase 2 Deploy to Prod</div>
-                            <div class="risk-detail">All issues are in advanced statuses (&#39;Ready to Deploy&#39; or &#39;Ready for QA&#39;), and the remaining work is well-defined.</div>
+                            <div class="risk-detail">All issues are in &#39;Ready to Deploy&#39; or &#39;Ready for QA&#39; status, but QA and deployment dependencies could introduce delays.</div>
                         </div>
                         
                     </div>
@@ -1082,17 +1082,17 @@
                     <p class="ai-section-heading">✅ Recommendations</p>
                     <ul class="rec-list">
                         
-                        <li>Prioritize testing and resolution of MGLOBAL-5512 to avoid delays in deployment.</li>
+                        <li>Prioritize QA for MGLOBAL-5512 to ensure it does not block deployment.</li>
                         
-                        <li>Ensure all &#39;Ready to Deploy&#39; issues (MGLOBAL-8289, MGLOBAL-7889, MGLOBAL-7887) are validated and prepared for release.</li>
+                        <li>Assign a deployment readiness review for MGLOBAL-8289, MGLOBAL-7889, and MGLOBAL-7887 to Neha Agarwal and Ashish Shukla.</li>
                         
-                        <li>Conduct a final review of deployment readiness for MGLOBAL-4846 to mitigate last-minute risks.</li>
+                        <li>Conduct a risk assessment meeting to identify potential blockers in the &#39;Ready to Deploy&#39; issues.</li>
                         
-                        <li>Assign a dedicated QA resource to expedite testing for MGLOBAL-5512.</li>
+                        <li>Ensure observability enhancements (MGLOBAL-5512) are validated by Jared Holzmeyer before July 15, 2026.</li>
                         
-                        <li>Monitor team capacity and address any blockers immediately to maintain velocity.</li>
+                        <li>Prepare a contingency plan for deployment delays, including rollback procedures.</li>
                         
-                        <li>Communicate the revised completion date of July 22, 2026, to stakeholders to set realistic expectations.</li>
+                        <li>Monitor velocity trends closely in Sprint 15 to identify any deviations early.</li>
                         
                     </ul>
                 </div>
@@ -1194,39 +1194,25 @@
                 childRow.classList.remove('show');
                 button.classList.remove('expanded');
             } else {
-                // Show the child items
+                // Show the child items (use pre-loaded data from data attribute)
                 button.classList.add('expanded');
                 
-                // Check if we already have cached data
-                if (_childItemsCache[epicKey]) {
-                    renderChildItems(epicKey, _childItemsCache[epicKey]);
-                    childRow.classList.add('show');
-                } else {
-                    // Fetch child items from API
-                    const tbody = document.getElementById('children-' + epicKey.replace(/-/g, '_'));
-                    if (tbody) {
-                        tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #999; padding: 30px;"><span class="loading-spinner"></span> Loading child items...</td></tr>';
+                const tbody = document.getElementById('children-' + epicKey.replace(/-/g, '_'));
+                if (tbody) {
+                    const childItemsJson = tbody.getAttribute('data-child-items');
+                    if (childItemsJson) {
+                        try {
+                            const childItems = JSON.parse(childItemsJson);
+                            renderChildItems(epicKey, { children: childItems });
+                        } catch (e) {
+                            console.error('Error parsing child items:', e);
+                            tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #d32f2f; padding: 20px;">⚠ Error parsing child items</td></tr>';
+                        }
+                    } else {
+                        tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #999; padding: 20px;">No child items found</td></tr>';
                     }
-                    
-                    fetch(`/api/epic_children/${epicKey}`)
-                        .then(response => {
-                            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                            return response.json();
-                        })
-                        .then(data => {
-                            _childItemsCache[epicKey] = data;
-                            renderChildItems(epicKey, data);
-                            childRow.classList.add('show');
-                        })
-                        .catch(error => {
-                            console.error('Error fetching child items:', error);
-                            const tbody = document.getElementById('children-' + epicKey.replace(/-/g, '_'));
-                            if (tbody) {
-                                tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #d32f2f; padding: 20px;">⚠ Error loading child items: ${error.message}</td></tr>`;
-                            }
-                            childRow.classList.add('show');
-                        });
                 }
+                childRow.classList.add('show');
             }
         }
 
