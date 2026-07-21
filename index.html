@@ -671,7 +671,7 @@
         <!-- Header -->
         <div class="header">
             <h1>📊 JIRA EPIC FORECAST REPORT</h1>
-            <p class="subtitle">Generated on 2026-07-21 12:08:28</p>
+            <p class="subtitle">Generated on 2026-07-21 12:36:58</p>
         </div>
 
         <!-- Project Tabs -->
@@ -845,12 +845,148 @@
 
             <!-- AI Summary Collapsible Panel -->
             
+            <script>
+            (window._aiData = window._aiData || [])[0] = {
+                sprintLoad: [{"end_date": "Mon Jul 22 2026", "issues": ["MGLOBAL-8289", "MGLOBAL-7889", "MGLOBAL-7887", "MGLOBAL-5512"], "points": 13.0, "risk_note": "Potential delays in QA for MGLOBAL-5512 or unexpected deployment blockers.", "sprint": "Sprint 15", "start_date": "Mon Jul 10 2026", "work": "Finalizing deployment and addressing observability enhancements."}],
+                total: 13.0
+            };
+            </script>
             <div class="ai-panel" id="ai-panel-0">
                 <div class="section">
-                    <p style="color:#888;text-align:center;padding:20px 0;">
-                        ⚠ AI summary not available. Ensure <code>AZURE_OPENAI_ENDPOINT</code> and
-                        <code>AZURE_OPENAI_KEY</code> are set in your <code>.env</code> file.
-                    </p>
+                    <h2 class="section-title">🤖 AI-Generated Forecast Summary</h2>
+
+                    <!-- Overview + Velocity Trend -->
+                    <div class="ai-overview">The project is slightly behind schedule by 14 days but is forecasted to complete within the next sprint. The team’s velocity has been stable but slightly underperforming on commitments, with an average of 44.67 points per sprint.</div>
+                    
+                    <div class="trend-badge trend-stable">
+                        📊 Velocity STABLE
+                         — The team has maintained a consistent velocity in the last three sprints, averaging 44.67 points.
+                    </div>
+                    
+
+                    <!-- Future Sprint Plan (Enhanced) -->
+                    <p class="ai-section-heading">📅 Future Sprint Plan</p>
+                    <div style="overflow-x:auto">
+                    <table class="ai-sub-table sprint-detail-table">
+                        <thead>
+                            <tr>
+                                <th style="width:130px">Sprint</th>
+                                <th style="width:95px;text-align:center">Pts Alloc.</th>
+                                <th style="width:105px;text-align:right">Remaining</th>
+                                <th style="width:175px">Key Issues</th>
+                                <th>Themes &amp; Work</th>
+                                <th style="width:185px">⚠ Risk / Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <tr>
+                                <td>
+                                    <span class="sprint-num-ai">Sprint 15</span>
+                                    
+                                    <div style="font-size:0.76em;color:#999;margin-top:2px">Mon Jul 10 2026 – Mon Jul 22 2026</div>
+                                    
+                                </td>
+                                <td style="text-align:center">
+                                    <span style="font-weight:700;color:#764ba2">13.0 pts</span>
+                                    <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:29%"></div></div>
+                                </td>
+                                <td style="text-align:right;font-weight:700;color:#28a745">
+                                    0 pts
+                                </td>
+                                <td>
+                                    <span class="issue-chip">MGLOBAL-8289</span> <span class="issue-chip">MGLOBAL-7889</span> <span class="issue-chip">MGLOBAL-7887</span> <span class="issue-chip">MGLOBAL-5512</span> 
+                                </td>
+                                <td style="color:#444;font-size:0.93em">Finalizing deployment and addressing observability enhancements.</td>
+                                <td style="font-size:0.87em;color:#666;font-style:italic">Potential delays in QA for MGLOBAL-5512 or unexpected deployment blockers.</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <!-- Projected Burndown Chart -->
+                    <p class="ai-section-heading">📉 Projected Burndown</p>
+                    <div class="burndown-wrap">
+                        <canvas id="burndown-0"></canvas>
+                    </div>
+
+                    <!-- Epic Risk Assessment -->
+                    <p class="ai-section-heading">⚠️ Epic Risk Assessment</p>
+                    <div class="risk-grid">
+                        
+                        <div class="risk-card risk-medium">
+                            <div class="risk-title">
+                                🟡 <strong>MGLOBAL-4846</strong>
+                                <span class="risk-badge medium">MEDIUM</span>
+                                <span style="float:right;font-weight:700;color:#555">13.0 pts</span>
+                            </div>
+                            <div style="color:#444;font-size:0.92em;font-weight:600">PetMeds: Phase 2 Deploy to Prod</div>
+                            <div class="risk-detail">All issues are in &#39;Ready to Deploy&#39; or &#39;Ready for QA&#39; status, but delays in QA or deployment could impact the timeline.</div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- What-If Scenarios -->
+                    <p class="ai-section-heading">🔀 What-If Scenarios</p>
+                    <table class="ai-sub-table">
+                        <thead>
+                            <tr>
+                                <th style="width:180px">Scenario</th>
+                                <th>Condition</th>
+                                <th style="width:160px">Est. Completion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><strong>🔴 Status Quo</strong></td>
+                                <td style="color:#555">No changes, velocity stays flat</td>
+                                <td style="font-weight:700;color:#667eea">July 22, 2026</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟡 Velocity +20%</strong></td>
+                                <td style="color:#555">Team consistently delivers 20% more</td>
+                                <td style="font-weight:700;color:#667eea">July 22, 2026</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>🟢 Scope Reduction</strong></td>
+                                <td style="color:#555">Defer lowest-priority items (~15% pts)</td>
+                                <td style="font-weight:700;color:#667eea">July 22, 2026</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>✅ Best Case</strong></td>
+                                <td style="color:#555">Velocity boost AND scope reduction</td>
+                                <td style="font-weight:700;color:#667eea">July 22, 2026</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <!-- Recommendations -->
+                    <p class="ai-section-heading">✅ Recommendations</p>
+                    <ul class="rec-list">
+                        
+                        <li>Ensure QA for MGLOBAL-5512 is prioritized to avoid delays in deployment.</li>
+                        
+                        <li>Coordinate with Neha Agarwal and Ashish Shukla to validate deployment readiness for MGLOBAL-8289 and MGLOBAL-7889.</li>
+                        
+                        <li>Schedule a deployment dry run to identify any last-minute blockers for MGLOBAL-4846.</li>
+                        
+                        <li>Monitor team capacity and ensure no unplanned work is introduced in Sprint 15.</li>
+                        
+                        <li>Review and optimize the CORS whitelist implementation in MGLOBAL-7887 to avoid post-deployment issues.</li>
+                        
+                    </ul>
                 </div>
             </div>
             
